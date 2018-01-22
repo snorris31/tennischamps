@@ -38,7 +38,7 @@ export default class WelcomeScreen extends React.Component {
 
        <Button style={styles.button}
         label='Create an Account'
-        onPress={() => this.props.navigation.navigate("LogIn")}
+        onPress={() => this.props.navigation.navigate("Registration")}
         />
 
       </View>
