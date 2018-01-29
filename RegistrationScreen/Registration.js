@@ -1,6 +1,7 @@
 import React, { Component } from "react";
-import { StyleSheet, Text, TextInput, View } from 'react-native';
+import { StyleSheet, Text, TextInput, Switch, View } from 'react-native';
 import * as firebase from 'firebase';
+import { Font } from 'expo';
 import Button from '../Components/Button';
 
 const firebaseConfig = {
@@ -17,7 +18,8 @@ export default class Registration extends Component {
     this.state = {
       username: '',
       password: '',
-      handedness: ''
+      handedness: null,
+      fontLoaded: false
     };
   }
   handleClick = () => {
@@ -28,10 +30,18 @@ export default class Registration extends Component {
         });
     
   }
+  async componentDidMount() {
+    await Font.loadAsync({
+      'bungee-inline': require('../assets/fonts/BungeeInline-Regular.ttf'),
+    });
+    this.setState({ fontLoaded: true });
+  }
   render() {
     return (
       <View style={styles.container}>
-
+      { this.state.fontLoaded ? (
+        <Text style={styles.titleText}>Registration</Text>
+          ) : null }
         <TextInput style={styles.inputField}
           placeholder='Create Username'
           onChangeText={(username) => this.setState({username})}
@@ -45,9 +55,9 @@ export default class Registration extends Component {
           placeholder='Re-Type Password'
           onChangeText={(password) => this.setState({password})}
         />
-        <TextInput style={styles.inputField}
-          placeholder='Lefty or Righty'
-          onChangeText={(handedness) => this.setState({handedness})}
+        <Switch
+          onValueChange={ (value) => this.setState({handedness: value}) }
+          handedness={this.state.handedness} 
         />
         <Button style={styles.button}
          label='Register'
