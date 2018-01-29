@@ -1,9 +1,12 @@
 import React, { Component } from "react";
 import Expo from "expo";
 import WelcomeScreen from "./WelcomeScreen/index.js";
+import firebase from 'firebase'
 
 export default class App extends Component {
   constructor() {
+
+// Initialize Firebase
     super();
     this.state = {
       isReady: true

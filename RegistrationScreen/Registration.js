@@ -1,17 +1,33 @@
 import React, { Component } from "react";
 import { StyleSheet, Text, TextInput, View } from 'react-native';
-
+import * as firebase from 'firebase';
 import Button from '../Components/Button';
 
+const firebaseConfig = {
+  apiKey: "AIzaSyCQrnN2gZJaFatH-ICtWNxhcZvQbWAHhis",
+  authDomain: "single-kingdom-126207.firebaseapp.com",
+  databaseURL: "https://single-kingdom-126207.firebaseio.com/",
+  storageBucket: "gs://single-kingdom-126207.appspot.com"
+};
+const firebaseApp = firebase.initializeApp(firebaseConfig);
 export default class Registration extends Component {
   constructor(props) {
     super(props);
+    this.itemsRef = firebaseApp.database().ref();
     this.state = {
       username: '',
-      password: ''
+      password: '',
+      handedness: ''
     };
   }
-
+  handleClick = () => {
+     this.itemsRef.push({
+          username: this.state.username,
+          password: this.state.password,
+          handedness: this.state.handedness
+        });
+    
+  }
   render() {
     return (
       <View style={styles.container}>
@@ -31,11 +47,11 @@ export default class Registration extends Component {
         />
         <TextInput style={styles.inputField}
           placeholder='Lefty or Righty'
-          onChangeText={(password) => this.setState({password})}
+          onChangeText={(handedness) => this.setState({handedness})}
         />
         <Button style={styles.button}
          label='Register'
-         onPress={() => this.props.navigation.navigate("WelcomeScreen")}
+         onPress={(e) => this.handleClick(e)}
         />
 
       </View>
