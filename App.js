@@ -3,10 +3,18 @@ import Expo from "expo";
 import WelcomeScreen from "./WelcomeScreen/index.js";
 import firebase from 'firebase'
 
+var firebaseConfig = {
+  apiKey: "AIzaSyCQrnN2gZJaFatH-ICtWNxhcZvQbWAHhis",
+  authDomain: "single-kingdom-126207.firebaseapp.com",
+  databaseURL: "https://single-kingdom-126207.firebaseio.com/",
+  storageBucket: "gs://single-kingdom-126207.appspot.com"
+};
+window.firebaseApp = firebase.initializeApp(firebaseConfig);
+
 export default class App extends Component {
   constructor() {
 
-// Initialize Firebase
+// Initialize Firebsase
     super();
     this.state = {
       isReady: true

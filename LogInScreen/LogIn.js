@@ -1,14 +1,10 @@
 import React, { Component } from "react";
+import * as firebase from 'firebase';
+import { Font } from 'expo';
 import { StyleSheet, Text, TextInput, View } from 'react-native';
 
 import Button from '../Components/Button';
-const firebaseConfig = {
-  apiKey: "AIzaSyCQrnN2gZJaFatH-ICtWNxhcZvQbWAHhis",
-  authDomain: "single-kingdom-126207.firebaseapp.com",
-  databaseURL: "https://single-kingdom-126207.firebaseio.com/",
-  storageBucket: "gs://single-kingdom-126207.appspot.com"
-};
-const firebaseApp = firebase.initializeApp(firebaseConfig);
+
 export default class LogIn extends Component {
   constructor(props) {
     super(props);
@@ -19,17 +15,27 @@ export default class LogIn extends Component {
     };
   }
   handleClick = () => {
-      this.itemsRef.snapshot.forEach(function(childSnapshot) {
+      var user = this.state.username;
+      var pass = this.state.password;
+      var nav = this.props.navigation;
+      this.itemsRef.orderByChild("username").equalTo(user).once("value").then(snapshot => {
       // key will be "ada" the first time and "alan" the second time
-        var data = snapshot.val();
-        if (data.username == this.state.username and data.password == this.state.password) {
-          
-        }
-        
-      // childData will be the actual contents of the child
-        var childData = childSnapshot.val();
-    
+          if(snapshot.val()){
+            this.itemsRef.orderByChild("password").equalTo(pass).once("value").then(snapshot => {
+              if (snapshot.val()){
+                nav.navigate("WelcomeScreen");
+              }
+              else {
+                nav.navigate("Registration");
+              }
+           });
+          } else {
+              nav.navigate("Registration");
+          }
+        });
+      nav.navigate("Registration");
   }
+
   render() {
     return (
       <View style={styles.container}>
@@ -46,7 +52,7 @@ export default class LogIn extends Component {
 
         <Button style={styles.button}
          label='Log In'
-         onPress={(e) => this.handleClick(e)}}
+         onPress={(e) => this.handleClick(e)}
         />
 
       </View>
