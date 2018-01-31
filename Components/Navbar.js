@@ -24,7 +24,8 @@ class Navbar extends Component {
     if (!this.state.fontLoaded) { return null;}
     return (
       <Header style={styles.header}>
-        <Button transparent>
+        <Button transparent
+          onPress={this.props.onPressBack}>
           <Ionicons name='ios-arrow-back' size={32} color='#ffffff'/>
         </Button>
         <Body>

@@ -15,9 +15,12 @@ export default class LogIn extends Component {
   }
 
   render() {
+    const { navigation } = this.props;
     return (
       <Container>
-        <Navbar title='LOG IN'/>
+        <Navbar
+          title='LOG IN'
+          onPressBack={() => navigation.goBack(null)}/>
         <Content contentContainerStyle={styles.content}>
           <View style={styles.loginFields}>
             <TextInput
@@ -34,7 +37,7 @@ export default class LogIn extends Component {
 
             <TouchableOpacity
               style={styles.textLink}
-               onPress={() => this.props.navigation.navigate("Home")}
+               onPress={() => navigation.navigate("Home")}
              >
              <Text style={styles.text}> Forgot your password? </Text>
             </TouchableOpacity>
@@ -42,7 +45,7 @@ export default class LogIn extends Component {
 
           <Button style={styles.button}
            label='Log In'
-           onPress={() => this.props.navigation.navigate("LogIn")}
+           onPress={() => navigation.navigate("LogIn")}
           />
 
           <TouchableOpacity
