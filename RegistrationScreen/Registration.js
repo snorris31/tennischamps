@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import { StyleSheet, Text, TextInput, Switch, View } from 'react-native';
+import { StyleSheet, TextInput, Switch, View } from 'react-native';
+import { Container, Header, Title, Content, Left, Right, Body, Icon, Text, ListItem, Radio } from 'native-base';
 import * as firebase from 'firebase';
-import { Font } from 'expo';
 import Button from '../Components/Button';
 
 const firebaseConfig = {
@@ -11,60 +11,141 @@ const firebaseConfig = {
   storageBucket: "gs://single-kingdom-126207.appspot.com"
 };
 const firebaseApp = firebase.initializeApp(firebaseConfig);
+
 export default class Registration extends Component {
   constructor(props) {
     super(props);
     this.itemsRef = firebaseApp.database().ref();
     this.state = {
+      email: '',
       username: '',
       password: '',
-      handedness: null,
+      righty: true,
+      lefty: false,
       fontLoaded: false
     };
   }
+
   handleClick = () => {
      this.itemsRef.push({
+          email: this.state.email,
           username: this.state.username,
           password: this.state.password,
-          handedness: this.state.handedness
+          righty: this.state.righty,
+          lefty: this.state.lefty
         });
-    
+
   }
+
   async componentDidMount() {
-    await Font.loadAsync({
+    await Expo.Font.loadAsync({
       'bungee-inline': require('../assets/fonts/BungeeInline-Regular.ttf'),
+      'Ionicons': require('../node_modules/native-base/Fonts/Ionicons.ttf'),
     });
     this.setState({ fontLoaded: true });
   }
+
+  toggleRighty() {
+    this.setState({
+      righty: true,
+      lefty: false
+    });
+  }
+
+  toggleLefty() {
+    this.setState({
+      righty: false,
+      lefty: true
+    });
+  }
+
+
   render() {
+    if (!this.state.fontLoaded) { return null;}
+
     return (
-      <View style={styles.container}>
-      { this.state.fontLoaded ? (
-        <Text style={styles.titleText}>Registration</Text>
-          ) : null }
-        <TextInput style={styles.inputField}
-          placeholder='Create Username'
-          onChangeText={(username) => this.setState({username})}
-        />
+      <Container>
+        <Header style={styles.header}>
+          <Left>
+            <Button transparent>
+              <Icon name='arrow-back' />
+            </Button>
+          </Left>
+          <Body>
+            <Title style={styles.title}>Registration</Title>
+          </Body>
+          {/*<Right>
+            <Button transparent>
+              <Icon name='menu' />
+            </Button>
+          </Right>*/}
+          <Right />
+        </Header>
+        <Content contentContainerStyle={styles.container}>
+          <TextInput style={styles.inputField}
+            placeholder='Email'
+            onChangeText={(email) => this.setState({email})}
+          />
 
-        <TextInput style={styles.inputField}
-          placeholder='Password'
-          onChangeText={(password) => this.setState({password})}
-        />
-        <TextInput style={styles.inputField}
-          placeholder='Re-Type Password'
-          onChangeText={(password) => this.setState({password})}
-        />
-        <Switch
-          onValueChange={ (value) => this.setState({handedness: value}) }
-          handedness={this.state.handedness} 
-        />
-        <Button style={styles.button}
-         label='Register'
-         onPress={(e) => this.handleClick(e)}
-        />
+          <TextInput style={styles.inputField}
+            placeholder='Username'
+            onChangeText={(username) => this.setState({username})}
+          />
 
-      </View>
+          <TextInput style={styles.inputField}
+            placeholder='Password'
+            onChangeText={(password) => this.setState({password})}
+          />
+
+          <TextInput style={styles.inputField}
+            placeholder='Re-Type Password'
+            onChangeText={(password) => this.setState({password})}
+          />
+
+          {/* <Switch
+            onValueChange={ (value) => this.setState({handedness: value}) }
+            handedness={this.state.handedness}
+          />*/}
+          <View style={styles.toggles}>
+          <Text style={styles.text}>Hand Dominance:</Text>
+          <ListItem
+            style={styles.toggleitem}
+            selected={this.state.righty}
+            onPress={() => this.toggleRighty()}
+          >
+            <Left>
+              <Text>Righty</Text>
+            </Left>
+            <Right>
+              <Radio
+                selected={this.state.righty}
+                onPress={() => this.toggleRighty()}
+              />
+            </Right>
+          </ListItem>
+          <ListItem
+            style={styles.toggleitem}
+            selected={this.state.lefty}
+            onPress={() => this.toggleLefty()}
+          >
+            <Left>
+              <Text>Lefty</Text>
+            </Left>
+            <Right>
+              <Radio
+                selected={this.state.lefty}
+                onPress={() => this.toggleLefty()}
+              />
+            </Right>
+          </ListItem>
+          </View>
+
+          <Button style={styles.button}
+           label='Register'
+           onPress={(e) => this.handleClick(e)}
+          />
+        </Content>
+      </Container>
     );
   }
 }
@@ -90,13 +171,31 @@ const styles = StyleSheet.create({
     margin: 6,
     borderColor: '#ffffff',
     backgroundColor: '#ffffff',
-    color: '#000000'
+    color: '#000000',
+    paddingHorizontal: 6
   },
-  titleText: {
+  text: {
+    marginVertical: 12,
+    marginHorizontal: 6
+  },
+  title: {
     fontFamily: 'bungee-inline',
-    fontSize: 32,
+    fontSize: 12,
     fontWeight: 'bold',
     color: '#ffffff',
-    marginBottom: 50
+  },
+  toggles: {
+    backgroundColor: '#ffffff',
+    margin: 6,
+    width: 250
+  },
+  toggleitem: {
+    width: '90%',
+    margin: 6,
+    borderColor: '#ffffff',
+    backgroundColor: '#ffffff'
+  },
+  header: {
+    backgroundColor: '#2A5D38'
   }
 });
