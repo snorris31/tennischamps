@@ -61,11 +61,15 @@ export default class Registration extends Component {
 
 
   render() {
+    const { navigation } = this.props;
+
     if (!this.state.fontLoaded) { return null;}
 
     return (
       <Container>
-        <Navbar title='CREATE AN ACCOUNT'/>
+        <Navbar
+          title='CREATE AN ACCOUNT'
+          onPressBack={() => navigation.goBack(null)}/>
         <Content contentContainerStyle={styles.content}>
           <TextInput style={styles.inputField}
             placeholder='Email'
@@ -86,7 +90,7 @@ export default class Registration extends Component {
             placeholder='Re-Type Password'
             onChangeText={(password) => this.setState({password})}
           />
-          
+
           <View style={styles.toggles}>
           <Text style={styles.text}>Hand Dominance:</Text>
           <ListItem
