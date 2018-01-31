@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-<<<<<<< HEAD
 import * as firebase from 'firebase';
 import { Font } from 'expo';
 import { StyleSheet, Text, TextInput, View, TouchableOpacity } from 'react-native';
@@ -33,7 +32,6 @@ export default class LogIn extends Component {
               nav.navigate("Registration");
           }
         });
-      nav.navigate("Registration");
   }
 
   render() {
