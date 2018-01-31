@@ -5,14 +5,6 @@ import * as firebase from 'firebase';
 import Button from '../Components/Button';
 import Navbar from '../Components/Navbar';
 
-const firebaseConfig = {
-  apiKey: "AIzaSyCQrnN2gZJaFatH-ICtWNxhcZvQbWAHhis",
-  authDomain: "single-kingdom-126207.firebaseapp.com",
-  databaseURL: "https://single-kingdom-126207.firebaseio.com/",
-  storageBucket: "gs://single-kingdom-126207.appspot.com"
-};
-const firebaseApp = firebase.initializeApp(firebaseConfig);
-
 export default class Registration extends Component {
   constructor(props) {
     super(props);
@@ -40,7 +32,8 @@ export default class Registration extends Component {
   async componentDidMount() {
     await Expo.Font.loadAsync({
       'bungee-inline': require('../assets/fonts/BungeeInline-Regular.ttf'),
-      'Ionicons': require('../node_modules/native-base/Fonts/Ionicons.ttf'),
+      'Ionicons': require('native-base/Fonts/Ionicons.ttf'),
+      'Roboto_medium': require("native-base/Fonts/Roboto_medium.ttf")
     });
     this.setState({ fontLoaded: true });
   }
