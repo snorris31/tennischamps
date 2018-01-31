@@ -1,8 +1,8 @@
 {
   "expoServerPort": 19000,
-  "packagerPort": 19003,
-  "packagerPid": 9391,
-  "expoServerNgrokUrl": "https://6v-v4a.snorris31.tennischamps.exp.direct",
-  "packagerNgrokUrl": "https://packager.6v-v4a.snorris31.tennischamps.exp.direct",
-  "ngrokPid": 9402
+  "packagerPort": 19001,
+  "packagerPid": 88306,
+  "expoServerNgrokUrl": "https://m8-epr.lixinwang.tennischamps.exp.direct",
+  "packagerNgrokUrl": "https://packager.m8-epr.lixinwang.tennischamps.exp.direct",
+  "ngrokPid": 88325
 }
