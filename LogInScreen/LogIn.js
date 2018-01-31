@@ -14,8 +14,19 @@ export default class LogIn extends Component {
     };
   }
 
+  async componentDidMount() {
+    await Expo.Font.loadAsync({
+      'bungee-inline': require('../assets/fonts/BungeeInline-Regular.ttf'),
+      'Ionicons': require('native-base/Fonts/Ionicons.ttf'),
+      'Roboto_medium': require("native-base/Fonts/Roboto_medium.ttf")
+    });
+    this.setState({ fontLoaded: true });
+  }
+
   render() {
     const { navigation } = this.props;
+    if (!this.state.fontLoaded) { return null;}
+    
     return (
       <Container>
         <Navbar

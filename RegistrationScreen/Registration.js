@@ -40,7 +40,8 @@ export default class Registration extends Component {
   async componentDidMount() {
     await Expo.Font.loadAsync({
       'bungee-inline': require('../assets/fonts/BungeeInline-Regular.ttf'),
-      'Ionicons': require('../node_modules/native-base/Fonts/Ionicons.ttf'),
+      'Ionicons': require('native-base/Fonts/Ionicons.ttf'),
+      'Roboto_medium': require("native-base/Fonts/Roboto_medium.ttf")
     });
     this.setState({ fontLoaded: true });
   }
