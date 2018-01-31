@@ -1,7 +1,9 @@
 import React, { Component } from "react";
-import { StyleSheet, Text, TextInput, View, TouchableOpacity } from 'react-native';
+import { StyleSheet, TextInput, TouchableOpacity, View } from 'react-native';
+import { Container, Content, Left, Right, Text, ListItem, Radio } from 'native-base';
 
 import Button from '../Components/Button';
+import Navbar from '../Components/Navbar';
 
 export default class LogIn extends Component {
   constructor(props) {
@@ -14,46 +16,54 @@ export default class LogIn extends Component {
 
   render() {
     return (
-      <View style={styles.container}>
+      <Container>
+        <Navbar title='LOG IN'/>
+        <Content contentContainerStyle={styles.content}>
+          <View style={styles.loginFields}>
+            <TextInput
+              style={styles.inputField}
+              placeholder='Username'
+              onChangeText={(username) => this.setState({username})}
+            />
 
-        <TextInput style={styles.inputField}
-          placeholder='Username'
-          onChangeText={(username) => this.setState({username})}
-        />
+            <TextInput
+              style={styles.inputField}
+              placeholder='Password'
+              onChangeText={(password) => this.setState({password})}
+            />
 
-        <TextInput style={styles.inputField}
-          placeholder='Password'
-          onChangeText={(password) => this.setState({password})}
-        />
+            <TouchableOpacity
+              style={styles.textLink}
+               onPress={() => this.props.navigation.navigate("Home")}
+             >
+             <Text style={styles.text}> Forgot your password? </Text>
+            </TouchableOpacity>
+          </View>
 
-        <TouchableOpacity style={styles.textLink}
-           onPress={() => this.props.navigation.navigate("Home")}
-         >
-         <Text style={styles.text}> Forgot your password? </Text>
-        </TouchableOpacity>
+          <Button style={styles.button}
+           label='Log In'
+           onPress={() => this.props.navigation.navigate("LogIn")}
+          />
 
-        <Button style={styles.button}
-         label='Log In'
-         onPress={() => this.props.navigation.navigate("LogIn")}
-        />
+          <TouchableOpacity
+            style={styles.textLink}
+             onPress={() => this.props.navigation.navigate("Registration")}
+           >
+           <Text style={styles.text}> Don&#8217;t have an account? </Text>
+          </TouchableOpacity>
 
-        <TouchableOpacity style={styles.textLink}
-           onPress={() => this.props.navigation.navigate("Registration")}
-         >
-         <Text style={styles.text}> Don&#8217;t have an account? </Text>
-        </TouchableOpacity>
-
-      </View>
+        </Content>
+      </Container>
     );
   }
 }
 
 const styles = StyleSheet.create({
-  container: {
+  content: {
     flex: 1,
     backgroundColor: '#2A5D38',
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'flex-start'
   },
   button: {
     alignItems: 'center',
@@ -72,12 +82,9 @@ const styles = StyleSheet.create({
     color: '#000000',
     paddingHorizontal: 6
   },
-  titleText: {
-    fontFamily: 'bungee-inline',
-    fontSize: 32,
-    fontWeight: 'bold',
-    color: '#ffffff',
-    marginBottom: 50
+  loginFields: {
+    marginTop: '30%',
+    marginBottom: '10%'
   },
   text: {
     color: '#ffffff',

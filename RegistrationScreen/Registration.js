@@ -1,8 +1,9 @@
 import React, { Component } from "react";
-import { StyleSheet, TextInput, Switch, View } from 'react-native';
-import { Container, Header, Title, Content, Left, Right, Body, Icon, Text, ListItem, Radio } from 'native-base';
+import { StyleSheet, TextInput, View } from 'react-native';
+import { Container, Content, Left, Right, Text, ListItem, Radio } from 'native-base';
 import * as firebase from 'firebase';
 import Button from '../Components/Button';
+import Navbar from '../Components/Navbar';
 
 const firebaseConfig = {
   apiKey: "AIzaSyCQrnN2gZJaFatH-ICtWNxhcZvQbWAHhis",
@@ -34,7 +35,6 @@ export default class Registration extends Component {
           righty: this.state.righty,
           lefty: this.state.lefty
         });
-
   }
 
   async componentDidMount() {
@@ -65,23 +65,8 @@ export default class Registration extends Component {
 
     return (
       <Container>
-        <Header style={styles.header}>
-          <Left>
-            <Button transparent>
-              <Icon name='arrow-back' />
-            </Button>
-          </Left>
-          <Body>
-            <Title style={styles.title}>Registration</Title>
-          </Body>
-          {/*<Right>
-            <Button transparent>
-              <Icon name='menu' />
-            </Button>
-          </Right>*/}
-          <Right />
-        </Header>
-        <Content contentContainerStyle={styles.container}>
+        <Navbar title='CREATE AN ACCOUNT'/>
+        <Content contentContainerStyle={styles.content}>
           <TextInput style={styles.inputField}
             placeholder='Email'
             onChangeText={(email) => this.setState({email})}
@@ -101,11 +86,7 @@ export default class Registration extends Component {
             placeholder='Re-Type Password'
             onChangeText={(password) => this.setState({password})}
           />
-
-          {/* <Switch
-            onValueChange={ (value) => this.setState({handedness: value}) }
-            handedness={this.state.handedness}
-          />*/}
+          
           <View style={styles.toggles}>
           <Text style={styles.text}>Hand Dominance:</Text>
           <ListItem
@@ -151,7 +132,7 @@ export default class Registration extends Component {
 }
 
 const styles = StyleSheet.create({
-  container: {
+  content: {
     flex: 1,
     backgroundColor: '#2A5D38',
     alignItems: 'center',
@@ -178,12 +159,6 @@ const styles = StyleSheet.create({
     marginVertical: 12,
     marginHorizontal: 6
   },
-  title: {
-    fontFamily: 'bungee-inline',
-    fontSize: 12,
-    fontWeight: 'bold',
-    color: '#ffffff',
-  },
   toggles: {
     backgroundColor: '#ffffff',
     margin: 6,
@@ -194,8 +169,5 @@ const styles = StyleSheet.create({
     margin: 6,
     borderColor: '#ffffff',
     backgroundColor: '#ffffff'
-  },
-  header: {
-    backgroundColor: '#2A5D38'
   }
 });
