@@ -20,7 +20,7 @@ class Button extends Component {
   render() {
     return (
       <TouchableOpacity
-           style={this.props.style}
+           style={[this.props.style, styles.button]}
            onPress={this.props.onPress}
          >
            {
@@ -34,6 +34,20 @@ class Button extends Component {
 }
 
 const styles = StyleSheet.create({
+  button: {
+    alignItems: 'center',
+    margin: 18,
+    width: 250,
+    paddingVertical: 10,
+    borderRadius: 5,
+    shadowColor: '#000000',
+    shadowOffset: {
+      width: 0,
+      height: 2
+    },
+    shadowRadius: 2,
+    shadowOpacity: 0.8
+  },
   buttonLabel: {
     fontFamily: 'bungee-inline',
     fontSize: 18,

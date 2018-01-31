@@ -69,12 +69,7 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start'
   },
   button: {
-    alignItems: 'center',
     backgroundColor: '#ffffff',
-    marginTop: 18,
-    width: 250,
-    paddingVertical: 10,
-    borderRadius: 5
   },
   inputField: {
     height: 40,
