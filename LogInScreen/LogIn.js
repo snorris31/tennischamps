@@ -1,17 +1,39 @@
 import React, { Component } from "react";
-import { StyleSheet, TextInput, TouchableOpacity, View } from 'react-native';
+import * as firebase from 'firebase';
+import { Font } from 'expo';
+import { StyleSheet, TextInput, View, TouchableOpacity } from 'react-native';
 import { Container, Content, Left, Right, Text, ListItem, Radio } from 'native-base';
-
 import Button from '../Components/Button';
 import Navbar from '../Components/Navbar';
 
 export default class LogIn extends Component {
   constructor(props) {
     super(props);
+    this.itemsRef = firebaseApp.database().ref();
     this.state = {
       username: '',
       password: ''
     };
+  }
+  handleClick = () => {
+      var user = this.state.username;
+      var pass = this.state.password;
+      var nav = this.props.navigation;
+      this.itemsRef.orderByChild("username").equalTo(user).once("value").then(snapshot => {
+      // key will be "ada" the first time and "alan" the second time
+          if(snapshot.val()){
+            this.itemsRef.orderByChild("password").equalTo(pass).once("value").then(snapshot => {
+              if (snapshot.val()){
+                nav.navigate("WelcomeScreen");
+              }
+              else {
+                nav.navigate("Registration");
+              }
+           });
+          } else {
+              nav.navigate("Registration");
+          }
+        });
   }
 
   async componentDidMount() {
@@ -54,11 +76,11 @@ export default class LogIn extends Component {
             </TouchableOpacity>
           </View>
 
-          <Button style={styles.button}
-           label='Log In'
-           onPress={() => navigation.navigate("LogIn")}
-          />
 
+        <Button style={styles.button}
+         label='Log In'
+         onPress={(e) => this.handleClick(e)}
+        />
           <TouchableOpacity
             style={styles.textLink}
              onPress={() => this.props.navigation.navigate("Registration")}
