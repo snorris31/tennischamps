@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import * as firebase from 'firebase';
 import { Font } from 'expo';
-import { StyleSheet, Text, TextInput, View, TouchableOpacity } from 'react-native';
+import { StyleSheet, TextInput, View, TouchableOpacity } from 'react-native';
 import { Container, Content, Left, Right, Text, ListItem, Radio } from 'native-base';
 import Button from '../Components/Button';
 import Navbar from '../Components/Navbar';
@@ -65,10 +65,6 @@ export default class LogIn extends Component {
             </TouchableOpacity>
           </View>
 
-          <Button style={styles.button}
-           label='Log In'
-           onPress={() => navigation.navigate("LogIn")}
-          />
 
         <Button style={styles.button}
          label='Log In'

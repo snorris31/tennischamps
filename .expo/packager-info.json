@@ -1,16 +1,8 @@
 {
-  "expoServerPort": 19000,
-<<<<<<< HEAD
-  "packagerPort": 19002,
-  "packagerPid": 15685,
+  "expoServerPort": 19003,
+  "packagerPort": 19004,
+  "packagerPid": 16665,
   "expoServerNgrokUrl": "https://rj-akw.snorris31.tennischamps.exp.direct",
   "packagerNgrokUrl": "https://packager.rj-akw.snorris31.tennischamps.exp.direct",
-  "ngrokPid": 15696
-=======
-  "packagerPort": 19001,
-  "packagerPid": 88306,
-  "expoServerNgrokUrl": "https://m8-epr.lixinwang.tennischamps.exp.direct",
-  "packagerNgrokUrl": "https://packager.m8-epr.lixinwang.tennischamps.exp.direct",
-  "ngrokPid": 88325
->>>>>>> 0a1e30c9910c9248c73948e034b4572667237474
+  "ngrokPid": 16680
 }
