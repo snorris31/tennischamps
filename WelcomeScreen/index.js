@@ -9,7 +9,7 @@ import Registration from "../RegistrationScreen/Registration.js"
 const WelcomeScreenRouter = DrawerNavigator(
   {
     Home: { screen: Welcome },
-    LogIn: { screen: LogIn }, 
+    LogIn: { screen: LogIn },
     Registration: {screen: Registration}
   }
 );
