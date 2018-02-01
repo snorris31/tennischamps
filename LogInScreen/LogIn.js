@@ -24,14 +24,14 @@ export default class LogIn extends Component {
           if(snapshot.val()){
             this.itemsRef.orderByChild("password").equalTo(pass).once("value").then(snapshot => {
               if (snapshot.val()){
-                nav.navigate("WelcomeScreen");
+                nav.navigate("Registration");
               }
               else {
-                nav.navigate("Registration");
+                nav.navigate("WelcomeScreen");
               }
            });
           } else {
-              nav.navigate("Registration");
+              nav.navigate("WelcomeScreen");
           }
         });
   }
