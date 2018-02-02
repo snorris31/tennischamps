@@ -13,6 +13,7 @@ export default class Registration extends Component {
       email: '',
       username: '',
       password: '',
+      repeatpass: '',
       righty: true,
       lefty: false,
       fontLoaded: false
@@ -20,13 +21,20 @@ export default class Registration extends Component {
   }
 
   handleClick = () => {
-     this.itemsRef.push({
-          email: this.state.email,
-          username: this.state.username,
-          password: this.state.password,
-          righty: this.state.righty,
-          lefty: this.state.lefty
-        });
+    var {email, username, password, repeatpass, righty, lefty} = this.state;
+    if (email == '' || username == '' || password == '') {
+      alert("Please enter missing information.");
+    } else if (password != repeatpass){
+      alert("Repeated password does not match.");
+    } else {
+      this.itemsRef.push({
+           email: email,
+           username: username,
+           password: password,
+           righty: righty,
+           lefty: lefty
+         });
+    }
   }
 
   async componentDidMount() {
@@ -59,7 +67,7 @@ export default class Registration extends Component {
     if (!this.state.fontLoaded) { return null;}
 
     return (
-      <Container>
+      <Container style={styles.container}>
         <Navbar
           title='CREATE AN ACCOUNT'
           onPressBack={() => navigation.goBack(null)}/>
@@ -81,7 +89,7 @@ export default class Registration extends Component {
 
           <TextInput style={styles.inputField}
             placeholder='Re-Type Password'
-            onChangeText={(password) => this.setState({password})}
+            onChangeText={(repeatpass) => this.setState({repeatpass})}
           />
 
           <View style={styles.toggles}>
@@ -129,19 +137,17 @@ export default class Registration extends Component {
 }
 
 const styles = StyleSheet.create({
+  container: {
+    backgroundColor: '#2A5D38'
+  },
   content: {
     flex: 1,
-    backgroundColor: '#2A5D38',
     alignItems: 'center',
     justifyContent: 'center'
   },
   button: {
-    alignItems: 'center',
     backgroundColor: '#ffffff',
-    margin: 18,
-    width: 250,
-    paddingVertical: 10,
-    borderRadius: 5
+    margin: 18
   },
   inputField: {
     height: 40,
