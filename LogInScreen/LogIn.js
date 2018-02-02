@@ -48,7 +48,7 @@ export default class LogIn extends Component {
   render() {
     const { navigation } = this.props;
     if (!this.state.fontLoaded) { return null;}
-    
+
     return (
       <Container>
         <Navbar
@@ -102,12 +102,8 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start'
   },
   button: {
-    alignItems: 'center',
     backgroundColor: '#ffffff',
-    marginTop: 18,
-    width: 250,
-    paddingVertical: 10,
-    borderRadius: 5
+    marginTop: 18
   },
   inputField: {
     height: 40,

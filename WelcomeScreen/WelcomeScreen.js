@@ -55,23 +55,34 @@ const styles = StyleSheet.create({
     justifyContent: 'center'
   },
   button: {
-    alignItems: 'center',
     backgroundColor: '#ffffff',
-    margin: 18,
-    width: 250,
-    paddingVertical: 10,
-    borderRadius: 5
+    margin: 18
   },
   image: {
     width: 180,
     height: 180,
-    margin: 40
+    margin: 40,
+    shadowColor: '#000000',
+    shadowOffset: {
+      width: 0,
+      height: 2
+    },
+    shadowRadius: 2,
+    shadowOpacity: 0.8
   },
   titleText: {
     fontFamily: 'bungee-inline',
     fontSize: 32,
     fontWeight: 'bold',
     color: '#ffffff',
-    marginBottom: 40
+    backgroundColor: 'transparent',
+    marginBottom: 40,
+    shadowColor: '#000000',
+    shadowOffset: {
+      width: 0,
+      height: 2
+    },
+    shadowRadius: 2,
+    shadowOpacity: 0.8
   }
 });

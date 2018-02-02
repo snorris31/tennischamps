@@ -59,7 +59,7 @@ export default class Registration extends Component {
     if (!this.state.fontLoaded) { return null;}
 
     return (
-      <Container>
+      <Container style={styles.container}>
         <Navbar
           title='CREATE AN ACCOUNT'
           onPressBack={() => navigation.goBack(null)}/>
@@ -129,19 +129,17 @@ export default class Registration extends Component {
 }
 
 const styles = StyleSheet.create({
+  container: {
+    backgroundColor: '#2A5D38'
+  },
   content: {
     flex: 1,
-    backgroundColor: '#2A5D38',
     alignItems: 'center',
     justifyContent: 'center'
   },
   button: {
-    alignItems: 'center',
     backgroundColor: '#ffffff',
-    margin: 18,
-    width: 250,
-    paddingVertical: 10,
-    borderRadius: 5
+    margin: 18
   },
   inputField: {
     height: 40,
