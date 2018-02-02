@@ -28,8 +28,12 @@ export default class LogIn extends Component {
           if(snapshot.val()){
             this.itemsRef.orderByChild("password").equalTo(pass).once("value").then(snapshot => {
               if (snapshot.val()){
+<<<<<<< HEAD
                 nav.navigate("homepage");
 
+=======
+                alert("Logged In!");
+>>>>>>> master
               }
               else {
                 alert("Invalid username or password.");
