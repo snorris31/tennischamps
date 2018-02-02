@@ -15,25 +15,30 @@ export default class LogIn extends Component {
       password: ''
     };
   }
+
   handleClick = () => {
-      var user = this.state.username;
-      var pass = this.state.password;
-      var nav = this.props.navigation;
+    var user = this.state.username;
+    var pass = this.state.password;
+    var nav = this.props.navigation;
+    if (user == '' || pass == '') {
+      alert("Please enter username and password.");
+    } else {
       this.itemsRef.orderByChild("username").equalTo(user).once("value").then(snapshot => {
       // key will be "ada" the first time and "alan" the second time
           if(snapshot.val()){
             this.itemsRef.orderByChild("password").equalTo(pass).once("value").then(snapshot => {
               if (snapshot.val()){
-                nav.navigate("Registration");
+                alert("Logged In!");
               }
               else {
-                nav.navigate("WelcomeScreen");
+                alert("Invalid username or password.");
               }
            });
           } else {
-              nav.navigate("WelcomeScreen");
+              alert("Invalid username or password.");
           }
         });
+    }
   }
 
   async componentDidMount() {
