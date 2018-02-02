@@ -48,7 +48,7 @@ export default class LogIn extends Component {
   render() {
     const { navigation } = this.props;
     if (!this.state.fontLoaded) { return null;}
-    
+
     return (
       <Container>
         <Navbar
@@ -103,6 +103,7 @@ const styles = StyleSheet.create({
   },
   button: {
     backgroundColor: '#ffffff',
+    marginTop: 18
   },
   inputField: {
     height: 40,

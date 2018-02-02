@@ -36,7 +36,6 @@ class Button extends Component {
 const styles = StyleSheet.create({
   button: {
     alignItems: 'center',
-    margin: 18,
     width: 250,
     paddingVertical: 10,
     borderRadius: 5,

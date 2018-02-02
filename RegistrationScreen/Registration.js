@@ -139,6 +139,7 @@ const styles = StyleSheet.create({
   },
   button: {
     backgroundColor: '#ffffff',
+    margin: 18
   },
   inputField: {
     height: 40,
