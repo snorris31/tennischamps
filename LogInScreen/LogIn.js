@@ -25,6 +25,7 @@ export default class LogIn extends Component {
             this.itemsRef.orderByChild("password").equalTo(pass).once("value").then(snapshot => {
               if (snapshot.val()){
                 nav.navigate("homepage");
+
               }
               else {
                 nav.navigate("WelcomeScreen");
