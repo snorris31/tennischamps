@@ -28,7 +28,7 @@ export default class LogIn extends Component {
           if(snapshot.val()){
             this.itemsRef.orderByChild("password").equalTo(pass).once("value").then(snapshot => {
               if (snapshot.val()){
-                nav.navigate("homepage");
+                nav.navigate("Home");
 
               }
               else {
@@ -65,18 +65,16 @@ export default class LogIn extends Component {
             <TextInput
               style={styles.inputField}
               placeholder='Username'
-              onChangeText={(username) => this.setState({username})}
-            />
+              onChangeText={(username) => this.setState({username})}/>
 
             <TextInput
               style={styles.inputField}
               placeholder='Password'
-              onChangeText={(password) => this.setState({password})}
-            />
+              onChangeText={(password) => this.setState({password})}/>
 
             <TouchableOpacity
               style={styles.textLink}
-               onPress={() => navigation.navigate("Home")}
+               onPress={() => navigation.navigate("Welcome")}
              >
              <Text style={styles.text}> Forgot your password? </Text>
             </TouchableOpacity>
@@ -85,8 +83,7 @@ export default class LogIn extends Component {
 
         <Button style={styles.button}
          label='Log In'
-         onPress={(e) => this.handleClick(e)}
-        />
+         onPress={(e) => this.handleClick(e)}/>
           <TouchableOpacity
             style={styles.textLink}
              onPress={() => this.props.navigation.navigate("Registration")}
