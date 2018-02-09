@@ -3,33 +3,35 @@ import * as firebase from 'firebase';
 import { Font } from 'expo';
 import { StyleSheet, TextInput, View, TouchableOpacity } from 'react-native';
 import { Container, Content, Left, Right, Text, ListItem, Radio } from 'native-base';
+
 import Button from '../Components/Button';
 import Navbar from '../Components/Navbar';
 
 export default class LogIn extends Component {
+
   constructor(props) {
     super(props);
     this.itemsRef = firebaseApp.database().ref();
     this.state = {
       username: '',
-      password: ''
+      password: '',
+      fontLoaded: false
     };
   }
 
   handleClick = () => {
-    var user = this.state.username;
-    var pass = this.state.password;
-    var nav = this.props.navigation;
-    if (user == '' || pass == '') {
+    const { username, password } = this.state;
+    const { navigation } = this.props;
+
+    if (username == '' || password == '') {
       alert("Please enter username and password.");
     } else {
-      this.itemsRef.orderByChild("username").equalTo(user).once("value").then(snapshot => {
+      this.itemsRef.orderByChild("username").equalTo(username).once("value").then(snapshot => {
       // key will be "ada" the first time and "alan" the second time
           if(snapshot.val()){
-            this.itemsRef.orderByChild("password").equalTo(pass).once("value").then(snapshot => {
+            this.itemsRef.orderByChild("password").equalTo(password).once("value").then(snapshot => {
               if (snapshot.val()){
-                nav.navigate("homepage");
-
+                navigation.navigate("Home");
               }
               else {
                 alert("Invalid username or password.");
@@ -89,7 +91,7 @@ export default class LogIn extends Component {
         />
           <TouchableOpacity
             style={styles.textLink}
-             onPress={() => this.props.navigation.navigate("Registration")}
+             onPress={() => navigation.navigate("Registration")}
            >
            <Text style={styles.text}> Don&#8217;t have an account? </Text>
           </TouchableOpacity>

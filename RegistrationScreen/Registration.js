@@ -2,10 +2,12 @@ import React, { Component } from "react";
 import { StyleSheet, TextInput, View } from 'react-native';
 import { Container, Content, Left, Right, Text, ListItem, Radio } from 'native-base';
 import * as firebase from 'firebase';
+
 import Button from '../Components/Button';
 import Navbar from '../Components/Navbar';
 
 export default class Registration extends Component {
+
   constructor(props) {
     super(props);
     this.itemsRef = firebaseApp.database().ref();
@@ -21,19 +23,22 @@ export default class Registration extends Component {
   }
 
   handleClick = () => {
-    var {email, username, password, repeatpass, righty, lefty} = this.state;
+    const { navigation } = this.props;
+    const {email, username, password, repeatpass, righty, lefty} = this.state;
+
     if (email == '' || username == '' || password == '') {
       alert("Please enter missing information.");
     } else if (password != repeatpass){
       alert("Repeated password does not match.");
     } else {
       this.itemsRef.push({
-           email: email,
-           username: username,
-           password: password,
-           righty: righty,
-           lefty: lefty
-         });
+       email: email,
+       username: username,
+       password: password,
+       righty: righty,
+       lefty: lefty
+      });
+      navigation.navigate("Welcome");
     }
   }
 

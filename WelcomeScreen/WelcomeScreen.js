@@ -5,6 +5,7 @@ import { Font } from 'expo';
 import Button from '../Components/Button';
 
 export default class WelcomeScreen extends React.Component {
+  
   constructor(props) {
     super(props);
     this.state = {

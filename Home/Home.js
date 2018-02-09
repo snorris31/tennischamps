@@ -6,7 +6,8 @@ import { Font } from 'expo';
 import Button from '../Components/Button';
 import Navbar from '../Components/Navbar';
 
-export default class WelcomeScreen extends React.Component {
+export default class Home extends React.Component {
+
   constructor(props) {
     super(props);
     this.state = {
@@ -33,7 +34,7 @@ export default class WelcomeScreen extends React.Component {
   render() {
     const { navigation } = this.props;
     if (!this.state.fontLoaded) { return null;}
-    
+
     return (
       <Container>
         <Navbar
@@ -48,22 +49,19 @@ export default class WelcomeScreen extends React.Component {
 
          <Button style={styles.button}
           label='HOW TO PLAY'
-          onPress={() => this.props.navigation.navigate("Registration")}
           />
 
           <Button style={styles.button}
-          label='SET PREFERENCE'
-          onPress={() => this.props.navigation.navigate("Registration")}
+          label='PREFERENCES'
           />
 
           <Button style={styles.button}
           label='MY STATS'
-          onPress={() => this.props.navigation.navigate("Registration")}
           />
 
           <Button style={styles.button}
           label='LOG OUT'
-          onPress={() => this.props.navigation.navigate("Home")}
+          onPress={() => this.props.navigation.navigate("Welcome")}
           />
         </Content>
       </Container>

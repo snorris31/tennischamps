@@ -3,15 +3,17 @@ import { DrawerNavigator } from "react-navigation";
 
 import Welcome from "./WelcomeScreen.js";
 import LogIn from "../LogInScreen/LogIn.js";
-import Registration from "../RegistrationScreen/Registration.js"
-import homepage from "../Home/homepage.js"
+import Registration from "../RegistrationScreen/Registration.js";
+import Home from "../Home/Home.js";
+import Training from "../TrainingMode/TrainingMode.js";
 
 const WelcomeScreenRouter = DrawerNavigator(
   {
-    Home: { screen: Welcome },
+    Welcome: { screen: Welcome },
     LogIn: { screen: LogIn },
-    Registration: {screen: Registration},
-    homepage: { screen: homepage}
+    Registration: { screen: Registration },
+    Home: { screen: Home },
+    Training: { screen: Training }
   }
 );
 
