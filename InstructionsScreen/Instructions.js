@@ -39,26 +39,17 @@ export default class Home extends React.Component {
       <Container>
         <Navbar
           title='HOME'
-          onPressBack={() => navigation.goBack(null)}/>
+          onPressBack={() => navigation.goBack("Home")}/>
 
         <Content contentContainerStyle={styles.content}>
-          <Button style={styles.button}
-           label='PLAY'
-           onPress={() => this.props.navigation.navigate("LogIn")}/>
+          <Text style={styles.firsttext}>1. Select play mode</Text>
 
-         <Button style={styles.button}
-          label='HOW TO PLAY'
-          onPress={() => this.props.navigation.navigate("Instructions")}/>
+          <Text style={styles.text}>2. Tap 'Ready' to begin</Text>
 
-          <Button style={styles.button}
-          label='PREFERENCES'/>
+          <Text style={styles.text}>3. Swipe to hit the ball</Text>
 
-          <Button style={styles.button}
-          label='MY STATS'/>
+          <Text style={styles.text}>4. To pause/quit, tap the menu in the top right corner</Text>
 
-          <Button style={styles.button}
-          label='LOG OUT'
-          onPress={() => this.props.navigation.navigate("Welcome")}/>
         </Content>
       </Container>
     );
@@ -70,11 +61,20 @@ const styles = StyleSheet.create({
   content: {
     flex: 1,
     backgroundColor: '#2A5D38',
-    alignItems: 'center',
-    justifyContent: 'center'
+    alignItems: 'flex-start',
+    justifyContent: 'flex-start'
   },
-  button: {
-    backgroundColor: '#ffffff',
-    margin: 18,
+  text: {
+    color: '#ffffff',
+    margin: 20,
+    fontFamily: 'bungee-inline',
+    marginLeft: 40,
+  },
+  firsttext: {
+    color: '#ffffff',
+    margin: 20,
+    fontFamily: 'bungee-inline',
+    marginLeft: 40,
+    marginTop: 100
   }
 });
