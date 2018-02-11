@@ -38,8 +38,8 @@ export default class Home extends React.Component {
     return (
       <Container>
         <Navbar
-          title='HOME'
-          onPressBack={() => navigation.goBack("Home")}/>
+          title='How To Play'
+          onPressBack={() => navigation.navigate("Home")}/>
 
         <Content contentContainerStyle={styles.content}>
           <Text style={styles.firsttext}>1. Select play mode</Text>
