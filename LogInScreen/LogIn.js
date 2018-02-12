@@ -61,7 +61,8 @@ export default class LogIn extends Component {
       <Container>
         <Navbar
           title='LOG IN'
-          onPressBack={() => navigation.goBack(null)}/>
+          onPressBack={() => navigation.goBack(null)}
+          handleHamburger={() => navigation.navigate('DrawerOpen')}/>
         <Content contentContainerStyle={styles.content}>
           <View style={styles.loginFields}>
             <TextInput

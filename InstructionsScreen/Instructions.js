@@ -39,7 +39,8 @@ export default class Home extends React.Component {
       <Container>
         <Navbar
           title='How To Play'
-          onPressBack={() => navigation.navigate("Home")}/>
+          onPressBack={() => navigation.navigate("Home")}
+          handleHamburger={() => navigation.navigate('DrawerOpen')}/>
 
         <Content contentContainerStyle={styles.content}>
           <Text style={styles.firsttext}>1. Select play mode</Text>
