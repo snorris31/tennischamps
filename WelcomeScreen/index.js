@@ -6,7 +6,7 @@ import LogIn from "../LogInScreen/LogIn.js";
 import Registration from "../RegistrationScreen/Registration.js";
 import Home from "../Home/Home.js";
 import Instructions from "../InstructionsScreen/Instructions.js";
-//import Training from "../TrainingMode/TrainingMode.js";
+import Training from "../TrainingMode/TrainingMode.js";
 
 const WelcomeScreenRouter = DrawerNavigator(
   {
@@ -14,8 +14,8 @@ const WelcomeScreenRouter = DrawerNavigator(
     LogIn: { screen: LogIn },
     Registration: { screen: Registration },
     Home: { screen: Home },
-    Instructions: {screen: Instructions}
-    //Training: { screen: Training }
+    Instructions: {screen: Instructions},
+    Training: { screen: Training }
   }
 );
 
