@@ -11,7 +11,7 @@ export default class WelcomeScreen extends React.Component {
     super(props);
     this.state = {
       fontLoaded: false,
-      key: state.params.key, 
+      key: state.params.key,
       sound: state.params.sound, 
       difficulty: state.params.difficulty,
       handedness: state.params.handedness
