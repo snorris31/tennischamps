@@ -46,7 +46,7 @@ export default class Home extends React.Component {
         <Content contentContainerStyle={styles.content}>
           <Button style={styles.button}
            label='PLAY'
-           onPress={() => this.props.navigation.navigate("LogIn")}/>
+           onPress={() => this.props.navigation.navigate("Mode")}/>
 
          <Button style={styles.button}
           label='HOW TO PLAY'
