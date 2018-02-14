@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { DrawerNavigator } from "react-navigation";
 
-import Welcome from "./WelcomeScreen.js";
+import Welcome from "./Welcome.js";
 import LogIn from "../LogInScreen/LogIn.js";
 import Registration from "../RegistrationScreen/Registration.js";
 import Home from "../Home/Home.js";

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Expo from "expo";
-import WelcomeScreen from "./index.js";
+import WelcomeScreen from "./WelcomeScreen/index.js";
 import firebase from 'firebase'
 
 var firebaseConfig = {
