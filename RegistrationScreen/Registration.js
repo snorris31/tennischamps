@@ -10,7 +10,7 @@ export default class Registration extends Component {
 
   constructor(props) {
     super(props);
-    this.itemsRef = firebaseApp.database().ref();
+    this.itemsRef = firebaseApp.database().ref('users');
     this.state = {
       email: '',
       username: '',
@@ -36,8 +36,9 @@ export default class Registration extends Component {
        username: username,
        password: password,
        righty: righty,
-       lefty: lefty
-      });
+       lefty: lefty, 
+       difficulty: 0
+      })
       navigation.navigate("Welcome");
     }
   }

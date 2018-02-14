@@ -47,7 +47,7 @@ const styles = StyleSheet.create({
   },
   title: {
     fontFamily: 'bungee-inline',
-    fontSize: 20,
+    fontSize: 30,
     fontWeight: 'bold',
     color: '#ffffff'
   },

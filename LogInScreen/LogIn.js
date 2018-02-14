@@ -11,7 +11,7 @@ export default class LogIn extends Component {
 
   constructor(props) {
     super(props);
-    this.itemsRef = firebaseApp.database().ref();
+    this.itemsRef = firebaseApp.database().ref('users');
     this.state = {
       username: '',
       password: '',
@@ -29,9 +29,12 @@ export default class LogIn extends Component {
       this.itemsRef.orderByChild("username").equalTo(username).once("value").then(snapshot => {
       // key will be "ada" the first time and "alan" the second time
           if(snapshot.val()){
+            var ref = snapshot.ref;  
             this.itemsRef.orderByChild("password").equalTo(password).once("value").then(snapshot => {
-              if (snapshot.val()){
-                navigation.navigate("Home");
+              if (snapshot.val()){        
+                var key = Object.keys(snapshot.val())[0];  
+                console.log(key);
+                navigation.navigate("Home", {key: key});
               }
               else {
                 alert("Invalid username or password.");

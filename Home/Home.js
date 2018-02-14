@@ -10,8 +10,10 @@ export default class Home extends React.Component {
 
   constructor(props) {
     super(props);
+    const {state} = this.props.navigation;
     this.state = {
       fontLoaded: false,
+      key: state.params.key
     };
   }
 
@@ -32,7 +34,6 @@ export default class Home extends React.Component {
   }
 
   render() {
-    const { navigation } = this.props;
     if (!this.state.fontLoaded) { return null;}
 
     return (
@@ -51,7 +52,8 @@ export default class Home extends React.Component {
           onPress={() => this.props.navigation.navigate("Instructions")}/>
 
           <Button style={styles.button}
-          label='PREFERENCES'/>
+          label='PREFERENCES'
+          onPress={() => this.props.navigation.navigate("Preferences", {key: this.state.key})}/>
 
           <Button style={styles.button}
           label='MY STATS'/>
