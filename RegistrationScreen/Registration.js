@@ -76,7 +76,8 @@ export default class Registration extends Component {
       <Container style={styles.container}>
         <Navbar
           title='CREATE AN ACCOUNT'
-          onPressBack={() => navigation.goBack(null)}/>
+          onPressBack={() => navigation.goBack(null)}
+          handleHamburger={() => navigation.navigate('DrawerOpen')}/>
         <Content contentContainerStyle={styles.content}>
           <TextInput style={styles.inputField}
             placeholder='Email'

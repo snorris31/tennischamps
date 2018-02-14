@@ -17,9 +17,10 @@ export default class Preferences extends Component {
     this.itemsRef = firebaseApp.database().ref();
     this.state = {
       fontLoaded: false,
-      isOn: true,
+      isOn: this.state.sound,
       key: state.params.key,
-      difficultyTypes: false
+      handedness: state.params.handedness,
+      difficultyTypes: state.params.difficulty
     }
   
     //const {key} = this.itemsRef.child(state.params.username);
@@ -107,7 +108,7 @@ export default class Preferences extends Component {
           onPressBack={() => navigation.goBack(null)}/>
         <Content contentContainerStyle={styles.content}>
           <ToggleSwitch
-            isOn={true}
+            isOn={this.state.sound}
             onColor='steelblue'
             offColor='red'
             label='SOUND: '
@@ -130,7 +131,7 @@ export default class Preferences extends Component {
           />
           <Text style={styles.text}>HAND - DOMINANCE: </Text>
           <RadioForm
-            radio_props={dominance_props}
+            radio_props={this.state.handedness}
             initial={0}
             formHorizontal={true}
             labelHorizontal={true}

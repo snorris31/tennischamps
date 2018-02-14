@@ -34,7 +34,13 @@ export default class LogIn extends Component {
               if (snapshot.val()){        
                 var key = Object.keys(snapshot.val())[0];  
                 console.log(key);
-                navigation.navigate("Home", {key: key});
+                var handedness = 0;
+                if (snapshot.val().righty == true) {
+                  handedness = 0
+                } else {
+                  handedness = 1;
+                }
+                navigation.navigate("Home", {key: key, difficulty: snapshot.val().difficulty, sound: snapshot.val().sound, handedness: handedness});
               }
               else {
                 alert("Invalid username or password.");
@@ -64,24 +70,23 @@ export default class LogIn extends Component {
       <Container>
         <Navbar
           title='LOG IN'
-          onPressBack={() => navigation.goBack(null)}/>
+          onPressBack={() => navigation.goBack(null)}
+          handleHamburger={() => navigation.navigate('DrawerOpen')}/>
         <Content contentContainerStyle={styles.content}>
           <View style={styles.loginFields}>
             <TextInput
               style={styles.inputField}
               placeholder='Username'
-              onChangeText={(username) => this.setState({username})}
-            />
+              onChangeText={(username) => this.setState({username})}/>
 
             <TextInput
               style={styles.inputField}
               placeholder='Password'
-              onChangeText={(password) => this.setState({password})}
-            />
+              onChangeText={(password) => this.setState({password})}/>
 
             <TouchableOpacity
               style={styles.textLink}
-               onPress={() => navigation.navigate("Home")}
+               onPress={() => navigation.navigate("Welcome")}
              >
              <Text style={styles.text}> Forgot your password? </Text>
             </TouchableOpacity>
@@ -90,8 +95,7 @@ export default class LogIn extends Component {
 
         <Button style={styles.button}
          label='Log In'
-         onPress={(e) => this.handleClick(e)}
-        />
+         onPress={(e) => this.handleClick(e)}/>
           <TouchableOpacity
             style={styles.textLink}
              onPress={() => navigation.navigate("Registration")}
