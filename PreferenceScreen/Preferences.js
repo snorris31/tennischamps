@@ -17,9 +17,10 @@ export default class Preferences extends Component {
     this.itemsRef = firebaseApp.database().ref();
     this.state = {
       fontLoaded: false,
-      isOn: true,
+      isOn: state.params.sound,
       key: state.params.key,
-      difficultyTypes: false
+      handedness: state.params.handedness,
+      difficultyTypes: state.params.difficulty
     }
   
     //const {key} = this.itemsRef.child(state.params.username);
@@ -33,10 +34,39 @@ export default class Preferences extends Component {
       console.log('/users/' + this.state.key + '/difficulty');
       updates['/users/' + this.state.key + '/difficulty'] = value;
       console.log(updates);
+      this.setState({difficulty: value});
       return this.itemsRef.update(updates);
       // key will be "ada" the first time and "alan" the second time
   }
-
+  handleSound = (value) => {
+      var updates = {};
+      console.log("diff", value);
+      console.log(this.state.key);
+      updates['/users/' + this.state.key + '/sound'] = value;
+      console.log(updates);
+      this.setState({isOn: value})
+      return this.itemsRef.update(updates);
+      // key will be "ada" the first time and "alan" the second time
+  }
+ handleHandedness = (value) => {
+      var updates = {};
+      console.log("diff", value);
+      console.log(this.state.key);
+      if (value == 0) {
+        updates['/users/' + this.state.key + '/righty'] = true;
+        updates['/users/' + this.state.key + '/lefty'] = false;
+        this.setState({handedness: 0})
+        return this.itemsRef.update(updates);
+      } else {
+        updates['/users/' + this.state.key + '/righty'] = false;
+        updates['/users/' + this.state.key + '/lefty'] = true;
+        this.setState({handedness: 1})
+        return this.itemsRef.update(updates);
+      }
+      //console.log('/users/' + this.state.key + '/h');
+      console.log(updates);
+      // key will be "ada" the first time and "alan" the second time
+  }
   getDiff = async() => {
     return new Promise((resolve, reject) => {
       firebaseApp.database().ref('/users/' + currUser).once('value').then(function(snapshot) {
@@ -52,8 +82,8 @@ export default class Preferences extends Component {
 
     });
   }
-  componentWillMount = async() => {
-   var difficulty = false;
+componentWillMount = async() => {
+  /* var difficulty = false;
    let promise = new Promise((resolve, reject) => {
       firebaseApp.database().ref('/users/' + currUser).once('value').then(function(snapshot) {
         difficulty = snapshot.val().difficulty;
@@ -65,9 +95,11 @@ export default class Preferences extends Component {
     });
     console.log(promise);
     promise.then((result) => {
-      console.log("res", result);
-      this.setState({difficultyTypes: result});
-    });
+      console.log("res", result);*/
+    //this.setState({difficultyTypes: result});
+    const {state} = this.props.navigation;
+    this.setState({handedness: state.params.handedness});
+    console.log(this.state.handedness);
   }
   async componentDidMount() {
     await Expo.Font.loadAsync({
@@ -93,11 +125,10 @@ export default class Preferences extends Component {
   }
 
   render() {
-    if (!this.state.fontLoaded) { return null;}
-    if (!this.state.difficultyTypes) { return null;}
     const { navigation } = this.props;
+    if (!this.state.fontLoaded) { return null;}
     const radio_props = [{label: 'Easy ', value: 0 }, {label: 'Medium ', value: 1 }, {label: 'Hard ', value: 2 }];
-    const dominance_props = [{label: 'Right-Handed ', handedness: 0 }, {label: 'Left-Handed ', handedness: 1 }];
+    const dominance_props = [{label: 'Right-Handed ', value: 0 }, {label: 'Left-Handed ', value: 1 }];
 
 
     return (
@@ -107,13 +138,13 @@ export default class Preferences extends Component {
           onPressBack={() => navigation.goBack(null)}/>
         <Content contentContainerStyle={styles.content}>
           <ToggleSwitch
-            isOn={true}
+            isOn={this.state.sound}
             onColor='steelblue'
             offColor='red'
             label='SOUND: '
             labelStyle={{textAlign: 'center', fontFamily: 'bungee-inline', fontSize: 30, fontWeight: 'bold', color: '#ffffff'}}
             size='medium'
-            onToggle={ (isOn) => this.setState({isOn})}
+            onToggle={ (isOn) => {this.handleSound(isOn)}}
           />
           <View style={styles.contentButtons}>
           <Text style={styles.text}>DIFFICULTY: </Text>
@@ -131,12 +162,12 @@ export default class Preferences extends Component {
           <Text style={styles.text}>HAND - DOMINANCE: </Text>
           <RadioForm
             radio_props={dominance_props}
-            initial={0}
+            initial={this.state.handedness}
             formHorizontal={true}
             labelHorizontal={true}
             buttonColor={'#ffffff'}
             animation={true}
-            onPress={(value) => {this.handleDifficulty(value)}}
+            onPress={(value) => {this.handleHandedness(value)}}
           />
           </View>
 

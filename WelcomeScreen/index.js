@@ -17,7 +17,7 @@ const WelcomeScreenRouter = DrawerNavigator(
     Registration: { screen: Registration },
     Home: { screen: Home },
     Instructions: {screen: Instructions}, 
-    Preferences: {screen: Preferences}
+    Preferences: {screen: Preferences},
     Mode: {screen: Mode}
     //Training: { screen: Training }
   }

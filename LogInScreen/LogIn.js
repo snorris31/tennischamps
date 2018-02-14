@@ -34,8 +34,30 @@ export default class LogIn extends Component {
               if (snapshot.val()){        
                 var key = Object.keys(snapshot.val())[0];  
                 console.log(key);
-                navigation.navigate("Home", {key: key});
-              }
+                var handedness = 0;
+                if (snapshot.val().righty == 'true') {
+                  handedness = 0
+                } else {
+                  handedness = 1;
+                }
+                firebaseApp.database().ref('/users/' + key).once("value").then(snapshot => {
+                  var difficulty = snapshot.val() && snapshot.val().difficulty;
+                   firebaseApp.database().ref('/users/' + key).once("value").then(snapshot => {
+                    var sound = snapshot.val() && snapshot.val().sound;
+                    firebaseApp.database().ref('/users/' + key).once("value").then(snapshot => {
+                    var handedness = snapshot.val() && snapshot.val().righty;
+                    if (handedness == false) {
+                       handedness = 1;
+                    } else {
+                      handedness = 0;
+                    }
+                    console.log(handedness);
+                    navigation.navigate("Home", {key: key, difficulty: difficulty, sound: sound, handedness: handedness});
+                  });
+                  });
+                 });
+                }
+                //console.log(Object.Object.keys(snapshot.val())[0]);
               else {
                 alert("Invalid username or password.");
               }

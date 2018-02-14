@@ -11,6 +11,10 @@ export default class WelcomeScreen extends React.Component {
     super(props);
     this.state = {
       fontLoaded: false,
+      key: state.params.key,
+      sound: state.params.sound, 
+      difficulty: state.params.difficulty,
+      handedness: state.params.handedness
     };
   }
 
@@ -51,7 +55,7 @@ export default class WelcomeScreen extends React.Component {
 
           <Button style={styles.button}
           label='SET PREFERENCE'
-          onPress={() => this.props.navigation.navigate("Registration")}/>
+          onPress={() => this.props.navigation.navigate("Preferences", {key: this.state.key, sound: this.state.sound, difficulty: this.state.difficulty, handedness: this.state.handedness})}/>
 
           <Button style={styles.button}
           label='MY STATS'
