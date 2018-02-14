@@ -4,9 +4,10 @@ import { Container, Content } from 'native-base';
 import { Font } from 'expo';
 
 import Button from '../Components/Button';
+import SpecialButton from '../Components/SpecialButton'
 import Navbar from '../Components/Navbar';
 
-export default class Instructions extends React.Component {
+export default class Mode extends React.Component {
 
   constructor(props) {
     super(props);
@@ -38,18 +39,21 @@ export default class Instructions extends React.Component {
     return (
       <Container>
         <Navbar
-          title='How To Play'
-          onPressBack={() => navigation.navigate("Home")}
-          handleHamburger={() => navigation.navigate('DrawerOpen')}/>
+          title='Mode'
+          onPressBack={() => navigation.navigate("Home")}/>
 
         <Content contentContainerStyle={styles.content}>
-          <Text style={styles.firsttext}>1. Select play mode</Text>
+          <Text style={styles.headertext}>Choose your mode:</Text>
 
-          <Text style={styles.text}>2. Tap 'Ready' to begin</Text>
+          <SpecialButton style={styles.button}
+           label='Training Mode'
+           buttonText = 'Practice your shots and accuracy'/>
+          
 
-          <Text style={styles.text}>3. Swipe to hit the ball</Text>
-
-          <Text style={styles.text}>4. To pause/quit, tap the menu in the top right corner</Text>
+          <SpecialButton style={styles.button}
+          label='Game Mode'
+          buttonText = 'Play a Match'/>
+          
 
         </Content>
       </Container>
@@ -62,22 +66,24 @@ const styles = StyleSheet.create({
   content: {
     flex: 1,
     backgroundColor: '#2A5D38',
-    alignItems: 'flex-start',
+    alignItems: 'center',
     justifyContent: 'flex-start'
   },
-  text: {
-    color: '#ffffff',
-    margin: 20,
-    fontFamily: 'bungee-inline',
-    marginLeft: 40,
-    fontSize: 22
+  button: {
+    backgroundColor: '#ffffff',
+    margin: 18,
+    marginTop: 50
   },
-  firsttext: {
-    color: '#ffffff',
-    margin: 20,
+  text: {
+    justifyContent: 'center',
+    color: 'white'
+  },
+  headertext: {
     fontFamily: 'bungee-inline',
-    marginLeft: 40,
-    marginTop: 100,
-    fontSize: 22
+    fontWeight: 'bold',
+    fontSize: 15,
+    alignItems: "flex-start",
+    color: "white",
+    marginTop: 75
   }
 });
