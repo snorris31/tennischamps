@@ -6,8 +6,7 @@ import { Font } from 'expo';
 import Button from '../Components/Button';
 import Navbar from '../Components/Navbar';
 
-
-export default class Instructions extends React.Component {
+export default class WelcomeScreen extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -34,21 +33,33 @@ export default class Instructions extends React.Component {
   render() {
     const { navigation } = this.props;
     if (!this.state.fontLoaded) { return null;}
+    
     return (
       <Container>
         <Navbar
-          title='How To Play'
-          onPressBack={() => navigation.navigate("Home")}
-          handleHamburger={() => navigation.navigate('DrawerOpen')}/>
+          title='HOME'
+          onPressBack={() => navigation.goBack(null)}/>
 
         <Content contentContainerStyle={styles.content}>
-          <Text style={styles.firsttext}>1. Select play mode</Text>
+          <Button style={styles.button}
+           label='PLAY'
+           onPress={() => this.props.navigation.navigate("LogIn")}/>
 
-          <Text style={styles.text}>2. Tap 'Ready' to begin</Text>
+         <Button style={styles.button}
+          label='HOW TO PLAY'
+          onPress={() => this.props.navigation.navigate("Instructions")}/>
 
-          <Text style={styles.text}>3. Swipe to hit the ball</Text>
+          <Button style={styles.button}
+          label='SET PREFERENCE'
+          onPress={() => this.props.navigation.navigate("Registration")}/>
 
-          <Text style={styles.text}>4. To pause/quit, tap the menu in the top right corner</Text>
+          <Button style={styles.button}
+          label='MY STATS'
+          onPress={() => this.props.navigation.navigate("Registration")}/>
+
+          <Button style={styles.button}
+          label='LOG OUT'
+          onPress={() => this.props.navigation.navigate("Welcome")}/>
         </Content>
       </Container>
     );
@@ -60,23 +71,11 @@ const styles = StyleSheet.create({
   content: {
     flex: 1,
     backgroundColor: '#2A5D38',
-    alignItems: 'flex-start',
-    justifyContent: 'flex-start'
+    alignItems: 'center',
+    justifyContent: 'center'
   },
-  text: {
-    color: '#ffffff',
-    margin: 20,
-    fontFamily: 'bungee-inline',
-    marginLeft: 40,
-    fontSize: 22
-  },
-  firsttext: {
-    color: '#ffffff',
-    margin: 20,
-    fontFamily: 'bungee-inline',
-    marginLeft: 40,
-    marginTop: 100,
-    fontSize: 22
+  button: {
+    backgroundColor: '#ffffff',
+    margin: 18,
   }
 });
-
