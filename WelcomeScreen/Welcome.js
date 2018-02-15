@@ -5,7 +5,7 @@ import { Font } from 'expo';
 import Button from '../Components/Button';
 
 export default class WelcomeScreen extends React.Component {
-  
+
   constructor(props) {
     super(props);
     this.state = {
@@ -41,6 +41,11 @@ export default class WelcomeScreen extends React.Component {
         label='Create an Account'
         onPress={() => this.props.navigation.navigate("Registration")}
         />
+
+      <Button style={styles.button}
+       label='temp link to training mode (will delete)'
+       onPress={() => this.props.navigation.navigate("Training")}
+       />
 
       </View>
     );
