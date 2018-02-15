@@ -17,7 +17,7 @@ export default class Preferences extends Component {
     this.itemsRef = firebaseApp.database().ref();
     this.state = {
       fontLoaded: false,
-      isOn: state.params.sound,
+      sound: state.params.sound,
       key: state.params.key,
       handedness: state.params.handedness,
       difficultyTypes: state.params.difficulty
@@ -34,7 +34,7 @@ export default class Preferences extends Component {
       console.log('/users/' + this.state.key + '/difficulty');
       updates['/users/' + this.state.key + '/difficulty'] = value;
       console.log(updates);
-      this.setState({difficulty: value});
+      this.setState({difficultyTypes: value});
       return this.itemsRef.update(updates);
       // key will be "ada" the first time and "alan" the second time
   }
@@ -44,7 +44,7 @@ export default class Preferences extends Component {
       console.log(this.state.key);
       updates['/users/' + this.state.key + '/sound'] = value;
       console.log(updates);
-      this.setState({isOn: value})
+      this.setState({sound: value})
       return this.itemsRef.update(updates);
       // key will be "ada" the first time and "alan" the second time
   }
@@ -135,7 +135,7 @@ componentWillMount = async() => {
       <Container style={styles.container}>
         <Navbar
           title='PREFERENCES'
-          onPressBack={() => navigation.goBack(null)}/>
+          onPressBack={() => navigation.navigate("Home", {key: this.state.key, difficulty: this.state.difficultyTypes, sound: this.state.isOn, handedness: this.state.handedness})}/>
         <Content contentContainerStyle={styles.content}>
           <ToggleSwitch
             isOn={this.state.sound}
@@ -144,7 +144,7 @@ componentWillMount = async() => {
             label='SOUND: '
             labelStyle={{textAlign: 'center', fontFamily: 'bungee-inline', fontSize: 30, fontWeight: 'bold', color: '#ffffff'}}
             size='medium'
-            onToggle={ (isOn) => {this.handleSound(isOn)}}
+            onToggle={ (sound) => {this.handleSound(sound)}}
           />
           <View style={styles.contentButtons}>
           <Text style={styles.text}>DIFFICULTY: </Text>
