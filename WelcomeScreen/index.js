@@ -4,7 +4,7 @@ import { DrawerNavigator } from "react-navigation";
 import Welcome from "./Welcome.js";
 import LogIn from "../LogInScreen/LogIn.js";
 import Registration from "../RegistrationScreen/Registration.js";
-import Home from "../Home/Home.js";
+import Home from "../HomeScreen/Home.js";
 import Instructions from "../InstructionsScreen/Instructions.js";
 import Preferences from "../PreferenceScreen/Preferences.js";
 import Mode from "../ModeScreen/Mode.js";
