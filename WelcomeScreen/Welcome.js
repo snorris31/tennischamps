@@ -43,7 +43,7 @@ export default class WelcomeScreen extends React.Component {
         />
 
       <Button style={styles.button}
-       label='temp button to training mode'
+       label='temp link to training mode (will delete)'
        onPress={() => this.props.navigation.navigate("Training")}
        />
 

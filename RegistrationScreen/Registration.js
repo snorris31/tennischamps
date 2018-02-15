@@ -10,7 +10,7 @@ export default class Registration extends Component {
 
   constructor(props) {
     super(props);
-    this.itemsRef = firebaseApp.database().ref();
+    this.itemsRef = firebaseApp.database().ref('users');
     this.state = {
       email: '',
       username: '',
@@ -36,8 +36,9 @@ export default class Registration extends Component {
        username: username,
        password: password,
        righty: righty,
-       lefty: lefty
-      });
+       lefty: lefty, 
+       difficulty: 0
+      })
       navigation.navigate("Welcome");
     }
   }
@@ -75,7 +76,8 @@ export default class Registration extends Component {
       <Container style={styles.container}>
         <Navbar
           title='CREATE AN ACCOUNT'
-          onPressBack={() => navigation.goBack(null)}/>
+          onPressBack={() => navigation.goBack(null)}
+          handleHamburger={() => navigation.navigate('DrawerOpen')}/>
         <Content contentContainerStyle={styles.content}>
           <TextInput style={styles.inputField}
             placeholder='Email'

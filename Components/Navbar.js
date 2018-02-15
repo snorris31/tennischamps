@@ -31,7 +31,7 @@ class Navbar extends Component {
         <Body>
           <Title style={styles.title}>{this.props.title}</Title>
         </Body>
-        <Button transparent>
+        <Button transparent onPress={this.props.handleHamburger}>
           <Ionicons name='md-menu' size={32} color='#ffffff'/>
         </Button>
       </Header>
@@ -47,7 +47,7 @@ const styles = StyleSheet.create({
   },
   title: {
     fontFamily: 'bungee-inline',
-    fontSize: 20,
+    fontSize: 24,
     fontWeight: 'bold',
     color: '#ffffff'
   },

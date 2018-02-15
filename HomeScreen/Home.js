@@ -10,8 +10,13 @@ export default class Home extends React.Component {
 
   constructor(props) {
     super(props);
+    const {state} = this.props.navigation;
     this.state = {
       fontLoaded: false,
+      key: state.params.key,
+      sound: state.params.sound, 
+      difficulty: state.params.difficulty,
+      handedness: state.params.handedness
     };
   }
 
@@ -32,26 +37,27 @@ export default class Home extends React.Component {
   }
 
   render() {
-    const { navigation } = this.props;
     if (!this.state.fontLoaded) { return null;}
 
     return (
       <Container>
         <Navbar
           title='HOME'
-          onPressBack={() => navigation.goBack(null)}/>
+          onPressBack={() => navigation.goBack(null)}
+          handleHamburger={() => navigation.navigate('DrawerOpen')}/>
 
         <Content contentContainerStyle={styles.content}>
           <Button style={styles.button}
            label='PLAY'
-           onPress={() => this.props.navigation.navigate("LogIn")}/>
+           onPress={() => this.props.navigation.navigate("Mode")}/>
 
          <Button style={styles.button}
           label='HOW TO PLAY'
           onPress={() => this.props.navigation.navigate("Instructions")}/>
 
           <Button style={styles.button}
-          label='PREFERENCES'/>
+          label='PREFERENCES'
+          onPress={() => this.props.navigation.navigate("Preferences", {key: this.state.key, sound: this.state.sound, difficulty: this.state.difficulty, handedness: this.state.handedness})}/>
 
           <Button style={styles.button}
           label='MY STATS'/>

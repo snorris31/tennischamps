@@ -11,7 +11,7 @@ export default class LogIn extends Component {
 
   constructor(props) {
     super(props);
-    this.itemsRef = firebaseApp.database().ref();
+    this.itemsRef = firebaseApp.database().ref('users');
     this.state = {
       username: '',
       password: '',
@@ -29,10 +29,35 @@ export default class LogIn extends Component {
       this.itemsRef.orderByChild("username").equalTo(username).once("value").then(snapshot => {
       // key will be "ada" the first time and "alan" the second time
           if(snapshot.val()){
+            var ref = snapshot.ref;  
             this.itemsRef.orderByChild("password").equalTo(password).once("value").then(snapshot => {
-              if (snapshot.val()){
-                navigation.navigate("Home");
-              }
+              if (snapshot.val()){        
+                var key = Object.keys(snapshot.val())[0];  
+                console.log(key);
+                var handedness = 0;
+                if (snapshot.val().righty == 'true') {
+                  handedness = 0
+                } else {
+                  handedness = 1;
+                }
+                firebaseApp.database().ref('/users/' + key).once("value").then(snapshot => {
+                  var difficulty = snapshot.val() && snapshot.val().difficulty;
+                   firebaseApp.database().ref('/users/' + key).once("value").then(snapshot => {
+                    var sound = snapshot.val() && snapshot.val().sound;
+                    firebaseApp.database().ref('/users/' + key).once("value").then(snapshot => {
+                    var handedness = snapshot.val() && snapshot.val().righty;
+                    if (handedness == false) {
+                       handedness = 1;
+                    } else {
+                      handedness = 0;
+                    }
+                    console.log(handedness);
+                    navigation.navigate("Home", {key: key, difficulty: difficulty, sound: sound, handedness: handedness});
+                  });
+                  });
+                 });
+                }
+                //console.log(Object.Object.keys(snapshot.val())[0]);
               else {
                 alert("Invalid username or password.");
               }
@@ -61,24 +86,23 @@ export default class LogIn extends Component {
       <Container>
         <Navbar
           title='LOG IN'
-          onPressBack={() => navigation.goBack(null)}/>
+          onPressBack={() => navigation.goBack(null)}
+          handleHamburger={() => navigation.navigate('DrawerOpen')}/>
         <Content contentContainerStyle={styles.content}>
           <View style={styles.loginFields}>
             <TextInput
               style={styles.inputField}
               placeholder='Username'
-              onChangeText={(username) => this.setState({username})}
-            />
+              onChangeText={(username) => this.setState({username})}/>
 
             <TextInput
               style={styles.inputField}
               placeholder='Password'
-              onChangeText={(password) => this.setState({password})}
-            />
+              onChangeText={(password) => this.setState({password})}/>
 
             <TouchableOpacity
               style={styles.textLink}
-               onPress={() => navigation.navigate("Home")}
+               onPress={() => navigation.navigate("Welcome")}
              >
              <Text style={styles.text}> Forgot your password? </Text>
             </TouchableOpacity>
@@ -87,8 +111,7 @@ export default class LogIn extends Component {
 
         <Button style={styles.button}
          label='Log In'
-         onPress={(e) => this.handleClick(e)}
-        />
+         onPress={(e) => this.handleClick(e)}/>
           <TouchableOpacity
             style={styles.textLink}
              onPress={() => navigation.navigate("Registration")}
