@@ -4,7 +4,7 @@ import { Container, Content, Left, Right, Text, ListItem, Radio } from 'native-b
 import * as firebase from 'firebase';
 import Button from '../Components/Button';
 import Navbar from '../Components/Navbar';
-import ToggleSwitch from 'toggle-switch-react-native';
+import { Switch } from 'react-native';
 import RadioForm, {RadioButton, RadioButtonInput, RadioButtonLabel} from 'react-native-simple-radio-button';
 
 export default class Preferences extends Component {
@@ -129,7 +129,9 @@ componentWillMount = async() => {
     if (!this.state.fontLoaded) { return null;}
     const radio_props = [{label: 'Easy ', value: 0 }, {label: 'Medium ', value: 1 }, {label: 'Hard ', value: 2 }];
     const dominance_props = [{label: 'Right-Handed ', value: 0 }, {label: 'Left-Handed ', value: 1 }];
-
+    console.log(this.state.sound);
+    console.log("true");
+    console.log("false");
 
     return (
       <Container style={styles.container}>
@@ -137,14 +139,11 @@ componentWillMount = async() => {
           title='PREFERENCES'
           onPressBack={() => navigation.navigate("Home", {key: this.state.key, difficulty: this.state.difficultyTypes, sound: this.state.isOn, handedness: this.state.handedness})}/>
         <Content contentContainerStyle={styles.content}>
-          <ToggleSwitch
-            isOn={this.state.sound}
-            onColor='steelblue'
-            offColor='red'
-            label='SOUND: '
-            labelStyle={{textAlign: 'center', fontFamily: 'bungee-inline', fontSize: 30, fontWeight: 'bold', color: '#ffffff'}}
-            size='medium'
-            onToggle={ (sound) => {this.handleSound(sound)}}
+        <Text style={styles.text}>SOUND: </Text>
+          <Switch
+            value={this.state.sound}
+            onValueChange={ (sound) => {this.handleSound(sound)}}
+            onTintColor= {"#0198E1"}
           />
           <View style={styles.contentButtons}>
           <Text style={styles.text}>DIFFICULTY: </Text>
