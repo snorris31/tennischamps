@@ -10,6 +10,7 @@ import Preferences from "../PreferenceScreen/Preferences.js";
 import Mode from "../ModeScreen/Mode.js";
 import Training from "../TrainingMode/TrainingMode.js";
 import Game from "../GameMode/GameMode.js";
+import SideMenu from "../SideMenu/SideMenu.js";
 
 const WelcomeScreenRouter = DrawerNavigator(
   {
@@ -22,6 +23,11 @@ const WelcomeScreenRouter = DrawerNavigator(
     Mode: { screen: Mode },
     Training: { screen: Training },
     Game: { screen: Game }
+  },
+  {
+    drawerWidth: 200,
+    drawerPosition: 'right',
+    contentComponent: SideMenu
   }
 );
 
