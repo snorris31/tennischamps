@@ -37,7 +37,7 @@ export default class Mode extends React.Component {
     if (!this.state.fontLoaded) { return null;}
 
     return (
-      <Container>
+      <Container style={styles.container}>
         <Navbar
           title='Mode'
           onPressBack={() => navigation.navigate("Home")}/>
@@ -53,7 +53,8 @@ export default class Mode extends React.Component {
 
           <SpecialButton style={styles.button}
           label='Game Mode'
-          buttonText = 'Play a Match'/>
+          buttonText = 'Play a Match'
+          onPress={() => this.props.navigation.navigate("Game")}/>
 
 
         </Content>
@@ -64,9 +65,11 @@ export default class Mode extends React.Component {
 
 
 const styles = StyleSheet.create({
+  container: {
+    backgroundColor: '#2A5D38'
+  },
   content: {
     flex: 1,
-    backgroundColor: '#2A5D38',
     alignItems: 'center',
     justifyContent: 'flex-start'
   },

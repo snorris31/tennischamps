@@ -6,7 +6,7 @@ import { Container, Content, Left, Right, Text, ListItem, Radio } from 'native-b
 import Button from '../Components/Button';
 import Navbar from '../Components/Navbar';
 
-export default class TrainingMode extends Component {
+export default class GameMode extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -32,7 +32,7 @@ export default class TrainingMode extends Component {
     return (
       <Container style={styles.container}>
         <Navbar
-          title='TRAINING'
+          title='GAME'
           onPressBack={() => navigation.goBack(null)}/>
 
         <View contentContainerStyle={styles.content}>
