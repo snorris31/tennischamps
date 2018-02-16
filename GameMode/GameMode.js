@@ -36,19 +36,16 @@ export default class GameMode extends Component {
           onPressBack={() => navigation.goBack(null)}/>
 
         <View contentContainerStyle={styles.content}>
-        <Text style={styles.text}> Shot: forehand </Text>
+        <Text style={styles.text}>SCORE: 0-0</Text>
           <Image style={styles.court}
             source={require('../assets/images/tenniscourt.png')}
           />
           <Image style={styles.ball}
             source={require('../assets/images/tennisball.png')}
           />
-          <Image style={styles.box}
-            source={require('../assets/images/box.png')}
+          <Image style={styles.person}
+            source={require('../assets/images/person.png')}
           />
-          <View style={styles.target}>
-            <Text style={styles.targetText}>TARGET</Text>
-          </View>
         </View>
       </Container>
     );
@@ -83,32 +80,18 @@ const styles = StyleSheet.create({
     resizeMode: 'contain',
     zIndex: 2,
     position: 'absolute',
+    alignSelf: 'center',
     height: 16,
-    top: 82,
-    right: -180
+    top: 70,
+    right: -158
   },
-  box: {
-    position: 'absolute',
-    top: 77,
-    right: 171,
-    zIndex: 1,
-    height: 25,
-    width: 25
-  },
-  target: {
-    width: 140/3,
-    height: 100/3,
-    backgroundColor: 'red',
+  person: {
+    resizeMode: 'contain',
     zIndex: 1,
     position: 'absolute',
-    alignItems: 'center',
-    justifyContent: 'center',
-    top: 106 + 100/3,
-    left: 121 + 140/3,
-  },
-  targetText: {
-    color: '#ffffff',
-    textAlign: 'center',
-    fontSize: 10
+    alignSelf: 'center',
+    height: 50,
+    top: 52,
+    right: -50
   }
 });
