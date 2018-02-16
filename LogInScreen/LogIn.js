@@ -29,10 +29,10 @@ export default class LogIn extends Component {
       this.itemsRef.orderByChild("username").equalTo(username).once("value").then(snapshot => {
       // key will be "ada" the first time and "alan" the second time
           if(snapshot.val()){
-            var ref = snapshot.ref;  
+            var ref = snapshot.ref;
             this.itemsRef.orderByChild("password").equalTo(password).once("value").then(snapshot => {
-              if (snapshot.val()){        
-                var key = Object.keys(snapshot.val())[0];  
+              if (snapshot.val()){
+                var key = Object.keys(snapshot.val())[0];
                 console.log(key);
                 var handedness = 0;
                 if (snapshot.val().righty == 'true') {
@@ -83,11 +83,12 @@ export default class LogIn extends Component {
     if (!this.state.fontLoaded) { return null;}
 
     return (
-      <Container>
+      <Container style={styles.container}>
         <Navbar
           title='LOG IN'
           onPressBack={() => navigation.goBack(null)}
           handleHamburger={() => navigation.navigate('DrawerOpen')}/>
+
         <Content contentContainerStyle={styles.content}>
           <View style={styles.loginFields}>
             <TextInput
@@ -126,9 +127,11 @@ export default class LogIn extends Component {
 }
 
 const styles = StyleSheet.create({
+  container: {
+    backgroundColor: '#2A5D38'
+  },
   content: {
     flex: 1,
-    backgroundColor: '#2A5D38',
     alignItems: 'center',
     justifyContent: 'flex-start'
   },

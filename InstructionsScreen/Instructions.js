@@ -35,7 +35,7 @@ export default class Instructions extends React.Component {
     const { navigation } = this.props;
     if (!this.state.fontLoaded) { return null;}
     return (
-      <Container>
+      <Container style={styles.container}>
         <Navbar
           title='How To Play'
           onPressBack={() => navigation.navigate("Home")}
@@ -57,9 +57,11 @@ export default class Instructions extends React.Component {
 
 
 const styles = StyleSheet.create({
+  container: {
+    backgroundColor: '#2A5D38'
+  },
   content: {
     flex: 1,
-    backgroundColor: '#2A5D38',
     alignItems: 'flex-start',
     justifyContent: 'flex-start'
   },
@@ -79,4 +81,3 @@ const styles = StyleSheet.create({
     fontSize: 22
   }
 });
-
