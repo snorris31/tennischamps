@@ -137,7 +137,7 @@ componentWillMount = async() => {
       <Container style={styles.container}>
         <Navbar
           title='PREFERENCES'
-          onPressBack={() => navigation.navigate("Home", {key: this.state.key, difficulty: this.state.difficultyTypes, sound: this.state.isOn, handedness: this.state.handedness})}/>
+          onPressBack={() => navigation.navigate("Home", {key: this.state.key, difficulty: this.state.difficultyTypes, sound: this.state.sound, handedness: this.state.handedness})}/>
         <Content contentContainerStyle={styles.content}>
         <Text style={styles.text}>SOUND: </Text>
           <Switch
