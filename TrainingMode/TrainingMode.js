@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Font } from 'expo';
-import { StyleSheet, View, Image } from 'react-native';
+import { Alert, StyleSheet, View, Image } from 'react-native';
 import { Container, Content, Left, Right, Text, ListItem, Radio } from 'native-base';
 
 import Button from '../Components/Button';
@@ -14,6 +14,10 @@ export default class TrainingMode extends Component {
     };
   }
 
+  _onPressButton() {
+    Alert.alert('You win!')
+  }
+
   async componentDidMount() {
     await Expo.Font.loadAsync({
       'bungee-inline': require('../assets/fonts/BungeeInline-Regular.ttf'),
@@ -22,6 +26,7 @@ export default class TrainingMode extends Component {
     });
     this.setState({ fontLoaded: true });
   }
+
 
   render() {
     const { navigation } = this.props;
@@ -35,20 +40,34 @@ export default class TrainingMode extends Component {
           title='TRAINING'
           onPressBack={() => navigation.goBack(null)}/>
 
+
         <View contentContainerStyle={styles.content}>
+        <Button style={styles.button}
+         label='Press Me'
+         onPress={this._onPressButton}
+        />
         <Text style={styles.text}> Shot: forehand </Text>
           <Image style={styles.court}
             source={require('../assets/images/tenniscourt.png')}
           />
+
           <Image style={styles.ball}
             source={require('../assets/images/tennisball.png')}
           />
           <Image style={styles.box}
             source={require('../assets/images/box.png')}
           />
+
+
           <View style={styles.target}>
             <Text style={styles.targetText}>TARGET</Text>
+
           </View>
+
+
+
+
+
         </View>
       </Container>
     );
@@ -64,6 +83,12 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'stretch',
     justifyContent: 'center',
+  },
+  button: {
+    position: 'absolute',
+    zIndex: 3,
+    left: 60,
+    bottom: 10
   },
   text: {
     fontFamily: 'bungee-inline',
