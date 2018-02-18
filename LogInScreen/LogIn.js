@@ -9,6 +9,7 @@ import Button from '../Components/Button';
 export default class LogIn extends Component {
   static navigationOptions = {
     title: 'Log In',
+    headerRight: null,
   };
 
   constructor(props) {

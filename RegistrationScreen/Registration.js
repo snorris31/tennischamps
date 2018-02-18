@@ -8,6 +8,7 @@ import Button from '../Components/Button';
 export default class Registration extends Component {
   static navigationOptions = {
     title: 'Create an Account',
+    headerRight: null,
   };
 
   constructor(props) {

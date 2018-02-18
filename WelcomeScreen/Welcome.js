@@ -7,6 +7,7 @@ import Button from '../Components/Button';
 export default class WelcomeScreen extends React.Component {
   static navigationOptions = {
     title: 'Welcome',
+    headerRight: null,
   };
 
   constructor(props) {
