@@ -41,12 +41,12 @@ const RootStack = StackNavigator(
         fontWeight: 'bold',
         color: '#ffffff'
       },
-      headerRight: (
+      /*headerRight: (
       <View padding={16}>
         <Button transparent >
           <Ionicons name='md-menu' size={32} color='#ffffff'/>
         </Button>
-      </View>),
+      </View>),*/
     },
   }
 );
