@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { StackNavigator } from "react-navigation";
 
-import { View, Button } from 'native-base';
+import { Text, View, Button } from 'native-base';
 import { Ionicons } from '@expo/vector-icons';
 
 import Welcome from "./Welcome.js";
@@ -36,7 +36,7 @@ const RootStack = StackNavigator(
       },
       headerTintColor: '#fff',
       headerTitleStyle: {
-        //fontFamily: 'bungee-inline',
+        fontFamily: 'bungee-inline',
         fontSize: 24,
         fontWeight: 'bold',
         color: '#ffffff'
@@ -50,5 +50,31 @@ const RootStack = StackNavigator(
     },
   }
 );
+/*
+export class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      fontLoaded: false,
+    };
+  }
 
+  async componentDidMount() {
+    debugger;
+    await Font.loadAsync({
+      'bungee-inline': require('../assets/fonts/BungeeInline-Regular.ttf'),
+    });
+    this.setState({ fontLoaded: true });
+  }
+
+  render() {
+    if (!this.state.fontLoaded) { <Text>loading</Text>}
+
+    return (
+    <View style={{flex: 1}}>
+      <RootStack />
+    </View>);
+  }
+}
+*/
 export default RootStack;
