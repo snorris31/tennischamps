@@ -74,7 +74,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
     zIndex: 3,
     left: 60,
-    bottom: 10
+    bottom: 20
   },
   text: {
     fontFamily: 'bungee-inline',

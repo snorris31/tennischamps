@@ -4,3 +4,4 @@ package-lock.json
 .expo
 .DS_Store
 .DS_Store?
+.expo/packager-info.json
