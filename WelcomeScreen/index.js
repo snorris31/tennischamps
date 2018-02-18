@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import { StackNavigator } from "react-navigation";
 
+import { View, Button } from 'native-base';
+import { Ionicons } from '@expo/vector-icons';
+
 import Welcome from "./Welcome.js";
 import LogIn from "../LogInScreen/LogIn.js";
 import Registration from "../RegistrationScreen/Registration.js";
@@ -38,6 +41,12 @@ const RootStack = StackNavigator(
         fontWeight: 'bold',
         color: '#ffffff'
       },
+      headerRight: (
+      <View padding={16}>
+        <Button transparent >
+          <Ionicons name='md-menu' size={32} color='#ffffff'/>
+        </Button>
+      </View>),
     },
   }
 );
