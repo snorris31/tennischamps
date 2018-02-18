@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Font } from 'expo';
-import { StyleSheet, View, Image } from 'react-native';
+import { Alert, StyleSheet, View, Image } from 'react-native';
 import { Container, Content, Left, Right, Text, ListItem, Radio } from 'native-base';
 
 import Button from '../Components/Button';
@@ -12,6 +12,10 @@ export default class GameMode extends Component {
     this.state = {
       fontLoaded: false
     };
+  }
+
+  _onPressButton() {
+    Alert.alert('You win!')
   }
 
   async componentDidMount() {
@@ -34,6 +38,10 @@ export default class GameMode extends Component {
         <Navbar
           title='GAME'
           onPressBack={() => navigation.goBack(null)}/>
+        <Button style={styles.button}
+         label='Press Me'
+         onPress={this._onPressButton}
+        />
 
         <View contentContainerStyle={styles.content}>
         <Text style={styles.text}>SCORE: 0-0</Text>
@@ -61,6 +69,12 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'stretch',
     justifyContent: 'center',
+  },
+  button: {
+    position: 'absolute',
+    zIndex: 3,
+    left: 60,
+    bottom: 10
   },
   text: {
     fontFamily: 'bungee-inline',

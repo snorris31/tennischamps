@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Font } from 'expo';
-import { Alert, StyleSheet, View, Image } from 'react-native';
+import { StyleSheet, View, Image } from 'react-native';
 import { Container, Content, Left, Right, Text, ListItem, Radio } from 'native-base';
 
 import Button from '../Components/Button';
@@ -14,9 +14,6 @@ export default class TrainingMode extends Component {
     };
   }
 
-  _onPressButton() {
-    Alert.alert('You win!')
-  }
 
   async componentDidMount() {
     await Expo.Font.loadAsync({
@@ -42,10 +39,7 @@ export default class TrainingMode extends Component {
 
 
         <View contentContainerStyle={styles.content}>
-        <Button style={styles.button}
-         label='Press Me'
-         onPress={this._onPressButton}
-        />
+
         <Text style={styles.text}> Shot: forehand </Text>
           <Image style={styles.court}
             source={require('../assets/images/tenniscourt.png')}
@@ -83,12 +77,6 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'stretch',
     justifyContent: 'center',
-  },
-  button: {
-    position: 'absolute',
-    zIndex: 3,
-    left: 60,
-    bottom: 10
   },
   text: {
     fontFamily: 'bungee-inline',
