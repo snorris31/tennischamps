@@ -7,6 +7,9 @@ import Button from '../Components/Button';
 import Navbar from '../Components/Navbar';
 
 export default class Home extends React.Component {
+  static navigationOptions = {
+    title: 'Home',
+  };
 
   constructor(props) {
     super(props);

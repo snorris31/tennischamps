@@ -8,6 +8,9 @@ import Button from '../Components/Button';
 import Navbar from '../Components/Navbar';
 
 export default class LogIn extends Component {
+  static navigationOptions = {
+    title: 'Log In',
+  };
 
   constructor(props) {
     super(props);

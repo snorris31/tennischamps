@@ -8,6 +8,9 @@ import { Switch } from 'react-native';
 import RadioForm, {RadioButton, RadioButtonInput, RadioButtonLabel} from 'react-native-simple-radio-button';
 
 export default class Preferences extends Component {
+  static navigationOptions = {
+    title: 'Preferences',
+  };
 
   constructor(props) {
     super(props);

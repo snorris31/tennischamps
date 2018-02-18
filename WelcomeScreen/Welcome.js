@@ -5,6 +5,9 @@ import { Font } from 'expo';
 import Button from '../Components/Button';
 
 export default class WelcomeScreen extends React.Component {
+  static navigationOptions = {
+    title: 'Welcome',
+  };
 
   constructor(props) {
     super(props);
