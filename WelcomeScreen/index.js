@@ -25,6 +25,20 @@ const RootStack = StackNavigator(
   },
   {
     initialRouteName: 'Welcome',
+    navigationOptions: {
+      gesturesEnabled: false,
+      headerBackTitle: null,
+      headerStyle: {
+        backgroundColor: '#2A5D38',
+      },
+      headerTintColor: '#fff',
+      headerTitleStyle: {
+        //fontFamily: 'bungee-inline',
+        fontSize: 24,
+        fontWeight: 'bold',
+        color: '#ffffff'
+      },
+    },
   }
 );
 

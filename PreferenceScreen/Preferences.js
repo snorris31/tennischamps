@@ -3,7 +3,6 @@ import { StyleSheet, TextInput, View } from 'react-native';
 import { Container, Content, Left, Right, Text, ListItem, Radio } from 'native-base';
 import * as firebase from 'firebase';
 import Button from '../Components/Button';
-import Navbar from '../Components/Navbar';
 import { Switch } from 'react-native';
 import RadioForm, {RadioButton, RadioButtonInput, RadioButtonLabel} from 'react-native-simple-radio-button';
 
@@ -138,9 +137,6 @@ componentWillMount = async() => {
 
     return (
       <Container style={styles.container}>
-        <Navbar
-          title='PREFERENCES'
-          onPressBack={() => navigation.navigate("Home", {key: this.state.key, difficulty: this.state.difficultyTypes, sound: this.state.sound, handedness: this.state.handedness})}/>
         <Content contentContainerStyle={styles.content}>
         <Text style={styles.text}>SOUND: </Text>
           <Switch

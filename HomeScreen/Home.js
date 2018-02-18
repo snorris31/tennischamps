@@ -4,7 +4,6 @@ import { Container, Content } from 'native-base';
 import { Font } from 'expo';
 
 import Button from '../Components/Button';
-import Navbar from '../Components/Navbar';
 
 export default class Home extends React.Component {
   static navigationOptions = {
@@ -44,11 +43,6 @@ export default class Home extends React.Component {
 
     return (
       <Container>
-        <Navbar
-          title='HOME'
-          onPressBack={() => navigation.goBack(null)}
-          handleHamburger={() => navigation.navigate('DrawerOpen')}/>
-
         <Content contentContainerStyle={styles.content}>
           <Button style={styles.button}
            label='PLAY'

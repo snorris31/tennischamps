@@ -4,9 +4,12 @@ import { StyleSheet, View, Image } from 'react-native';
 import { Container, Content, Left, Right, Text, ListItem, Radio } from 'native-base';
 
 import Button from '../Components/Button';
-import Navbar from '../Components/Navbar';
 
 export default class TrainingMode extends Component {
+  static navigationOptions = {
+    title: 'Training',
+  };
+
   constructor(props) {
     super(props);
     this.state = {
@@ -31,10 +34,6 @@ export default class TrainingMode extends Component {
 
     return (
       <Container style={styles.container}>
-        <Navbar
-          title='TRAINING'
-          onPressBack={() => navigation.goBack(null)}/>
-
         <View contentContainerStyle={styles.content}>
         <Text style={styles.text}> Shot: forehand </Text>
           <Image style={styles.court}
