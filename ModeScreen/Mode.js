@@ -7,6 +7,9 @@ import Button from '../Components/Button';
 import SpecialButton from '../Components/SpecialButton'
 
 export default class Mode extends React.Component {
+  static navigationOptions = {
+    title: 'Mode',
+  };
 
   constructor(props) {
     super(props);

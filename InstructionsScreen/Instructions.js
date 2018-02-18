@@ -7,6 +7,10 @@ import Button from '../Components/Button';
 
 
 export default class Instructions extends React.Component {
+  static navigationOptions = {
+    title: 'How to Play',
+  };
+  
   constructor(props) {
     super(props);
     this.state = {
