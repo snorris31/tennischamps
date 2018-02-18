@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { DrawerNavigator } from "react-navigation";
+import { StackNavigator } from "react-navigation";
 
 import Welcome from "./Welcome.js";
 import LogIn from "../LogInScreen/LogIn.js";
@@ -11,7 +11,7 @@ import Mode from "../ModeScreen/Mode.js";
 import Training from "../TrainingMode/TrainingMode.js";
 import Game from "../GameMode/GameMode.js";
 
-const WelcomeScreenRouter = DrawerNavigator(
+const RootStack = StackNavigator(
   {
     Welcome: { screen: Welcome },
     LogIn: { screen: LogIn },
@@ -22,7 +22,10 @@ const WelcomeScreenRouter = DrawerNavigator(
     Mode: { screen: Mode },
     Training: { screen: Training },
     Game: { screen: Game }
+  },
+  {
+    initialRouteName: 'Welcome',
   }
 );
 
-export default WelcomeScreenRouter;
+export default RootStack;
