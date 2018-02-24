@@ -24,7 +24,7 @@ export default class Preferences extends Component {
       handedness: state.params.handedness,
       difficultyTypes: state.params.difficulty
     }
-  
+
     //const {key} = this.itemsRef.child(state.params.username);
     //console.log(this.state.difficultyTypes);
   }
@@ -138,27 +138,36 @@ componentWillMount = async() => {
     return (
       <Container style={styles.container}>
         <Content contentContainerStyle={styles.content}>
-        <Text style={styles.text}>SOUND: </Text>
-          <Switch
-            value={this.state.sound}
-            onValueChange={ (sound) => {this.handleSound(sound)}}
-            onTintColor= {"#0198E1"}
-          />
-          <View style={styles.contentButtons}>
+
+        <View style={styles.contentButtons}>
+          <Text style={styles.text}>SOUND:
+            <Switch
+              value={this.state.sound}
+              onValueChange={ (sound) => {this.handleSound(sound)}}
+              onTintColor= {"#0198E1"}
+              marginLeft= {15}
+          /></Text>
+        </View>
+
+        <View style={styles.contentButtons}>
           <Text style={styles.text}>DIFFICULTY: </Text>
           <RadioForm
+            style={styles.radio}
             radio_props={radio_props}
             initial={this.state.difficultyTypes}
             formHorizontal={true}
             labelHorizontal={true}
             buttonColor={'#ffffff'}
-            buttonInnerColor={'green'}
-            buttonSize = {20}
+            buttonSize= {18}
             animation={true}
             onPress={(value) => {this.handleDifficulty(value)}}
           />
-          <Text style={styles.text}>HAND - DOMINANCE: </Text>
+        </View>
+
+        <View style={styles.contentButtons}>
+          <Text style={styles.text}>HAND DOMINANCE:</Text>
           <RadioForm
+            style={styles.radio}
             radio_props={dominance_props}
             initial={this.state.handedness}
             formHorizontal={true}
@@ -167,7 +176,7 @@ componentWillMount = async() => {
             animation={true}
             onPress={(value) => {this.handleHandedness(value)}}
           />
-          </View>
+        </View>
 
         </Content>
       </Container>
@@ -180,12 +189,12 @@ const styles = StyleSheet.create({
     backgroundColor: '#2A5D38'
   },
   content: {
-    margin: 30,
+    marginTop: 30,
     alignItems: 'center',
     justifyContent: 'flex-start'
   },
   contentButtons: {
-    margin: 6,
+    marginBottom: 18,
     width: 250,
   },
   button: {
@@ -204,11 +213,10 @@ const styles = StyleSheet.create({
   text: {
     color: '#ffffff',
     fontFamily: 'bungee-inline',
-    marginVertical: 12,
-    fontSize: 30,
+    marginTop: 12,
+    fontSize: 24,
     fontWeight: 'bold',
-    textAlign: 'center',
-    marginHorizontal: 6
+    textAlign: 'center'
   },
   radioActive: {
     width: 20,
@@ -225,5 +233,8 @@ const styles = StyleSheet.create({
     margin: 6,
     borderColor: '#ffffff',
     backgroundColor: '#ffffff'
+  },
+  radio: {
+    marginVertical: 12
   }
 });

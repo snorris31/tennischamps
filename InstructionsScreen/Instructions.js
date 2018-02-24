@@ -10,7 +10,7 @@ export default class Instructions extends React.Component {
   static navigationOptions = {
     title: 'How to Play',
   };
-  
+
   constructor(props) {
     super(props);
     this.state = {
@@ -75,7 +75,7 @@ const styles = StyleSheet.create({
     margin: 20,
     fontFamily: 'bungee-inline',
     marginLeft: 40,
-    marginTop: 100,
+    marginTop: 60,
     fontSize: 22
   }
 });

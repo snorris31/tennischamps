@@ -38,10 +38,6 @@ export default class GameMode extends Component {
 
     return (
       <Container style={styles.container}>
-        <Button style={styles.button}
-         label='Press Me'
-         onPress={this._onPressButton}
-        />
 
         <View contentContainerStyle={styles.content}>
         <Text style={styles.text}>SCORE: 0-0</Text>
@@ -81,7 +77,8 @@ const styles = StyleSheet.create({
     color: '#ffffff',
     fontSize: 24,
     fontWeight: 'bold',
-    margin: 10
+    margin: 10,
+    textAlign: 'center'
   },
   court: {
     height: 525,
