@@ -17,7 +17,7 @@ export default class Home extends React.Component {
     this.state = {
       fontLoaded: false,
       key: state.params.key,
-      sound: state.params.sound, 
+      sound: state.params.sound,
       difficulty: state.params.difficulty,
       handedness: state.params.handedness
     };
@@ -43,7 +43,7 @@ export default class Home extends React.Component {
     if (!this.state.fontLoaded) { return null;}
 
     return (
-      <Container>
+      <Container style={styles.container}>
         <Content contentContainerStyle={styles.content}>
           <Button style={styles.button}
            label='PLAY'
@@ -71,6 +71,9 @@ export default class Home extends React.Component {
 
 
 const styles = StyleSheet.create({
+  container: {
+    backgroundColor: '#2A5D38'
+  },
   content: {
     flex: 1,
     backgroundColor: '#2A5D38',
