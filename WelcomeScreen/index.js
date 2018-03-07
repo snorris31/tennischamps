@@ -37,7 +37,7 @@ const RootStack = StackNavigator(
       headerTintColor: '#fff',
       headerTitleStyle: {
         //fontFamily: 'bungee-inline',
-        fontSize: 24,
+        fontSize: 18,
         fontWeight: 'bold',
         color: '#ffffff'
       },

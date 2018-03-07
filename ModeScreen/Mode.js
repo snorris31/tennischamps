@@ -40,14 +40,13 @@ export default class Mode extends React.Component {
 
     return (
       <Container style={styles.container}>
+      <Text style={styles.headertext}>Choose your mode:</Text>
         <Content contentContainerStyle={styles.content}>
-          <Text style={styles.headertext}>Choose your mode:</Text>
 
           <SpecialButton style={styles.button}
            label='Training Mode'
-           buttonText = 'Practice your shots and accuracy'
+           buttonText = 'Practice Your Shots and Accuracy'
            onPress={() => this.props.navigation.navigate("Training")}/>
-
 
           <SpecialButton style={styles.button}
           label='Game Mode'
@@ -83,9 +82,9 @@ const styles = StyleSheet.create({
   headertext: {
     fontFamily: 'bungee-inline',
     fontWeight: 'bold',
-    fontSize: 15,
-    alignItems: "flex-start",
+    fontSize: 24,
     color: "white",
-    marginTop: 75
+    marginTop: 60,
+    textAlign: 'center'
   }
 });

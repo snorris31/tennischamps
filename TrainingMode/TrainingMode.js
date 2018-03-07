@@ -40,11 +40,10 @@ export default class TrainingMode extends Component {
     return (
       <Container style={styles.container}>
         <View contentContainerStyle={styles.content}>
-        <Button style={styles.button}
-         label='Press Me'
-         onPress={this._onPressButton}
-        />
-        <Text style={styles.text}> Shot: forehand </Text>
+        <View style={styles.textContainer}>
+          <Text style={styles.text}> Shot: forehand </Text>
+          <Text style={styles.text}> Target: T serviceline </Text>
+        </View>
           <Image style={styles.court}
             source={require('../assets/images/tenniscourt.png')}
           />
@@ -56,15 +55,9 @@ export default class TrainingMode extends Component {
             source={require('../assets/images/box.png')}
           />
 
-
           <View style={styles.target}>
             <Text style={styles.targetText}>TARGET</Text>
-
           </View>
-
-
-
-
 
         </View>
       </Container>
@@ -91,8 +84,12 @@ const styles = StyleSheet.create({
   text: {
     fontFamily: 'bungee-inline',
     color: '#ffffff',
-    fontSize: 24,
+    fontSize: 18,
     fontWeight: 'bold',
+    marginVertical: 1,
+    textAlign: 'center'
+  },
+  textContainer: {
     margin: 10
   },
   court: {
@@ -107,12 +104,12 @@ const styles = StyleSheet.create({
     zIndex: 2,
     position: 'absolute',
     height: 16,
-    top: 82,
-    right: -180
+    top: 100,
+    right: -181
   },
   box: {
     position: 'absolute',
-    top: 77,
+    top: 96,
     right: 171,
     zIndex: 1,
     height: 25,
@@ -126,7 +123,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
     alignItems: 'center',
     justifyContent: 'center',
-    top: 106 + 100/3,
+    top: 126 + 100/3,
     left: 121 + 140/3,
   },
   targetText: {
