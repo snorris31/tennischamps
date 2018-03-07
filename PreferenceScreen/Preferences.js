@@ -136,9 +136,6 @@ componentWillMount = async() => {
     console.log("false");
 
     return (
-      <Navbar
-        title='PREFERENCES'
-        onPressBack={() => navigation.navigate("Home", {key: this.state.key, difficulty: this.state.difficultyTypes, sound: this.state.isOn, handedness: this.state.handedness})}/>
       <Container style={styles.container}>
         <Content contentContainerStyle={styles.content}>
 
