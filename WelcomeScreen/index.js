@@ -13,6 +13,7 @@ import Preferences from "../PreferenceScreen/Preferences.js";
 import Mode from "../ModeScreen/Mode.js";
 import Training from "../TrainingMode/TrainingMode.js";
 import Game from "../GameMode/GameMode.js";
+import Stats from "../StatsScreen/Stats.js";
 
 const RootStack = StackNavigator(
   {
@@ -24,7 +25,8 @@ const RootStack = StackNavigator(
     Preferences: { screen: Preferences },
     Mode: { screen: Mode },
     Training: { screen: Training },
-    Game: { screen: Game }
+    Game: { screen: Game },
+    Stats: {screen: Stats}
   },
   {
     initialRouteName: 'Welcome',

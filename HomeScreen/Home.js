@@ -58,7 +58,8 @@ export default class Home extends React.Component {
           onPress={() => this.props.navigation.navigate("Preferences", {key: this.state.key, sound: this.state.sound, difficulty: this.state.difficulty, handedness: this.state.handedness})}/>
 
           <Button style={styles.button}
-          label='MY STATS'/>
+          label='MY STATS'
+          onPress={() => this.props.navigation.navigate("Stats")}/>
 
           <Button style={styles.button}
           label='LOG OUT'

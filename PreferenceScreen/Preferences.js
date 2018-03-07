@@ -65,7 +65,7 @@ export default class Preferences extends Component {
         this.setState({handedness: 1})
         return this.itemsRef.update(updates);
       }
-      //console.log('/users/' + this.state.key + '/h');
+      // console.log('/users/' + this.state.key + '/h');
       console.log(updates);
       // key will be "ada" the first time and "alan" the second time
   }
