@@ -20,7 +20,24 @@ export default class TrainingMode extends Component {
     Alert.alert('Nice job! Accuracy: 95%');
   }
 
+  getAccuracy(shotCoordinate, shotTarget) {
+    let [xCoord, yCoord] = shotCoordinate
+    let [xCoordTar, yCoordTar] = shotTarget
+    distance = (((xCoord - xCoordTar)**2) + ((yCoord - yCoordTar)**2))**0.5
+    if (distance < 5) {
+      return "veryclose"
+    }
+    if (distance > 5 && distance <= 15) {
+      return "close"
+    }
+    if (distance > 15 && distance <= 25) {
+      return "average"
+    }
+    if (distance > 25) {
+      return "far"
+    }
 
+  }
   async componentDidMount() {
     await Expo.Font.loadAsync({
       'bungee-inline': require('../assets/fonts/BungeeInline-Regular.ttf'),
