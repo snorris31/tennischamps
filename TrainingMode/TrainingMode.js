@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Font } from 'expo';
-import { Alert, StyleSheet, View, Image } from 'react-native';
+import { TouchableOpacity, StyleSheet, View, Image } from 'react-native';
 import { Container, Content, Left, Right, Text, ListItem, Radio } from 'native-base';
 
 import Button from '../Components/Button';
@@ -15,9 +15,6 @@ export default class TrainingMode extends Component {
     this.state = {
       fontLoaded: false
     };
-  }
-  _onPressButton() {
-    Alert.alert('Nice job! Accuracy: 95%');
   }
 
   getAccuracy(shotCoordinate, shotTarget) {
@@ -46,6 +43,13 @@ export default class TrainingMode extends Component {
     });
     this.setState({ fontLoaded: true });
   }
+  onPress = () => {
+    this.setState({
+      zone: "I got touched with a parent pan responder",
+    });
+    this.props.navigation.navigate("EndGameScreen");
+  };
+
 
 
   render() {
@@ -59,7 +63,12 @@ export default class TrainingMode extends Component {
         <View contentContainerStyle={styles.content}>
         <View style={styles.textContainer}>
           <Text style={styles.text}> Shot: forehand </Text>
-          <Text style={styles.text}> Target: T serviceline </Text>
+          <Text style={styles.text}> Target: No 1 </Text>
+        </View>
+        <View style={styles.container}>
+          <TouchableOpacity onPress={this.onPress}>
+            <Text>{this.state.zone}</Text>
+          </TouchableOpacity>
         </View>
           <Image style={styles.court}
             source={require('../assets/images/tenniscourt.png')}
@@ -75,6 +84,12 @@ export default class TrainingMode extends Component {
           <View style={styles.target}>
             <Text style={styles.targetText}>TARGET</Text>
           </View>
+
+          <Button style={styles.button}
+           label='End the game'
+           onPress={() => this.props.navigation.navigate("EndGameScreen")}
+          />
+
 
         </View>
       </Container>
@@ -93,10 +108,12 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   button: {
+    backgroundColor: '#ffffff',
     position: 'absolute',
     zIndex: 3,
-    left: 60,
-    bottom: 50
+    bottom: 10,
+    left: 60
+
   },
   text: {
     fontFamily: 'bungee-inline',
