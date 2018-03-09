@@ -5,6 +5,7 @@ import { Font } from 'expo';
 
 import Button from '../Components/Button';
 import SpecialButton from '../Components/SpecialButton'
+import Navbar from '../Components/Navbar';
 
 export default class Mode extends React.Component {
   static navigationOptions = {
@@ -40,7 +41,13 @@ export default class Mode extends React.Component {
 
     return (
       <Container style={styles.container}>
-      <Text style={styles.headertext}>Choose your mode:</Text>
+      
+        <Navbar
+          title='Mode'
+          onPressBack={() => navigation.navigate("Home")}/>
+
+        <Text style={styles.headertext}>Choose your mode:</Text>
+
         <Content contentContainerStyle={styles.content}>
 
           <SpecialButton style={styles.button}

@@ -4,6 +4,7 @@ import { Container, Content, Left, Right, Text, ListItem, Radio } from 'native-b
 import * as firebase from 'firebase';
 
 import Button from '../Components/Button';
+import Navbar from '../Components/Navbar';
 
 export default class Registration extends Component {
   static navigationOptions = {
@@ -77,6 +78,10 @@ export default class Registration extends Component {
 
     return (
       <Container style={styles.container}>
+        <Navbar
+          title='CREATE AN ACCOUNT'
+          onPressBack={() => navigation.goBack(null)}
+          handleHamburger={() => navigation.navigate('DrawerOpen')}/>
         <Content contentContainerStyle={styles.content}>
           <TextInput style={styles.inputField}
             placeholder='Email'
