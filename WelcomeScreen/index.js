@@ -29,6 +29,11 @@ const RootStack = DrawerNavigator(
   {
     drawerPosition: "right",
     drawerWidth: 200,
+    /*contentOptions:
+    {
+
+      items: ["Home", "Preferences"],
+    },*/
     
   }
 );
