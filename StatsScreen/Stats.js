@@ -15,8 +15,15 @@ export default class Stats extends React.Component {
 
   constructor(props) {
     super(props);
+    this.itemsRef = firebaseApp.database().ref('users');
+    const {state} = this.props.navigation;
+    window.currUser = state.params.key;
     this.state = {
       fontLoaded: false,
+      sound: state.params.sound,
+      key: state.params.key,
+      handedness: state.params.handedness,
+      difficultyTypes: state.params.difficulty
     };
   }
 
@@ -34,6 +41,7 @@ export default class Stats extends React.Component {
       'Roboto_medium': require("native-base/Fonts/Roboto_medium.ttf")
     });
     this.setState({ fontLoaded: true });
+    getStats(0);
   }
 
   render() {
@@ -51,9 +59,27 @@ export default class Stats extends React.Component {
     const tableDataHand = [
       ['1', '', '2', '', '3'],
       ['4', '', '5', '', '6'],
-      ['', '', '', '', '', ''],
-      ['1', '', '2', '', '3']
+      ['', '', '', '', ''],
+      ['13', '', '14', '', '15']
     ];
+
+    getStats = (value) => {
+      if (value == 0) {
+        hand = 'forehand'
+      } 
+      else if (value == 1) {
+        hand = "backhand"
+      } else {
+        hand = "serve"
+      }
+      firebaseApp.database().ref('/users/' + currUser + "/stats/" + hand).once("value").then(snapshot => {
+        snapshot.forEach(function(childSnapshot) {
+          var hits = childSnapshot.val() && childSnapshot.val().hits;
+          var shots = childSnapshot.val() && childSnapshot.val().shots;
+          console.log("hi" + hits/shots);
+      })
+      });
+    }
 
     if (!this.state.fontLoaded) { return null;}
     return (
@@ -64,7 +90,7 @@ export default class Stats extends React.Component {
             <RadioForm
               style={styles.radio}
               radio_props={radio_props}
-              initial={0}
+              initial = {0}
               formHorizontal={true}
               labelHorizontal={true}
               buttonColor={'#ffffff'}
@@ -72,7 +98,7 @@ export default class Stats extends React.Component {
               selectedLabelColor = {'#ffffff'}
               buttonSize= {18}
               animation={false}
-              onPress={(value) => {this.setState({value:value})}}/>
+              onPress={(value) => {this.getStats(value)}}/>
           </View>
 
 
