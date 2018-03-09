@@ -5,8 +5,12 @@ import * as firebase from 'firebase';
 
 import Button from '../Components/Button';
 import Navbar from '../Components/Navbar';
+import Hidden from '../Components/Hidden';
 
 export default class Registration extends Component {
+  static navigationOptions = {
+    drawerLabel: <Hidden />,
+  };
 
   constructor(props) {
     super(props);

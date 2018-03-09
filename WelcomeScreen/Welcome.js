@@ -3,8 +3,12 @@ import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { Font } from 'expo';
 
 import Button from '../Components/Button';
+import Hidden from '../Components/Hidden';
 
 export default class WelcomeScreen extends React.Component {
+  static navigationOptions = {
+    drawerLabel: <Hidden />,
+  };
 
   constructor(props) {
     super(props);

@@ -6,10 +6,11 @@ import { Font } from 'expo';
 import Button from '../Components/Button';
 import SpecialButton from '../Components/SpecialButton'
 import Navbar from '../Components/Navbar';
+import Hidden from '../Components/Hidden';
 
 export default class Mode extends React.Component {
   static navigationOptions = {
-    title: 'Mode',
+    drawerLabel: <Hidden />,
   };
 
   constructor(props) {

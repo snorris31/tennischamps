@@ -5,8 +5,13 @@ import { Container, Content, Left, Right, Text, ListItem, Radio } from 'native-b
 
 import Button from '../Components/Button';
 import Navbar from '../Components/Navbar';
+import Hidden from '../Components/Hidden';
 
 export default class GameMode extends Component {
+  static navigationOptions = {
+    drawerLabel: <Hidden />,
+  };
+
   constructor(props) {
     super(props);
     this.state = {
