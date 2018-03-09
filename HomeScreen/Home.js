@@ -9,7 +9,6 @@ import Navbar from '../Components/Navbar';
 export default class Home extends React.Component {
   static navigationOptions = {
     title: 'Home',
-    headerLeft: null, // No back button on this screen
   };
 
   constructor(props) {
