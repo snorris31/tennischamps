@@ -7,10 +7,6 @@ import Button from '../Components/Button';
 import Navbar from '../Components/Navbar';
 
 export default class GameMode extends Component {
-  static navigationOptions = {
-    title: 'Game',
-  };
-
   constructor(props) {
     super(props);
     this.state = {

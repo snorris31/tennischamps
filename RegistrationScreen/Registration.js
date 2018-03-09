@@ -7,10 +7,6 @@ import Button from '../Components/Button';
 import Navbar from '../Components/Navbar';
 
 export default class Registration extends Component {
-  static navigationOptions = {
-    title: 'Create an Account',
-    headerRight: null,
-  };
 
   constructor(props) {
     super(props);
