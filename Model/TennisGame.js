@@ -13,10 +13,17 @@ export default class TennisGame {
         return 4;
     }
 
-    getShotResult(targetLoc, playerPosition, shotDirection, shotPower) {
-        
 
-        
+
+    getShotResult(targetLoc, playerPosition, shotDirection, shotDistance) {
+        // angle of 0 = straight right
+        // angle of pi/2 = straight up
+        var dx = shotDistance * Math.cos(shotDirection);
+        var dy = shotDistance * Math.sin(shotDirection);
+
+        var landedPosition = [playerPosition[0] + dx, playerPosition[1] + dy];
+
+        return this.getAccuracy(landedPosition, targetLoc);
     }
 
     getAccuracy(shotCoordinate, shotTarget) {
