@@ -43,8 +43,8 @@ export default class Home extends React.Component {
       <Container>
         <Navbar
           title='HOME'
-          onPressBack={() => navigation.goBack(null)}
-          handleHamburger={() => navigation.navigate('DrawerOpen')}/>
+          onPressBack={() => this.props.navigation.goBack(null)}
+          handleHamburger={() => this.props.navigation.navigate('DrawerOpen')}/>
 
         <Content contentContainerStyle={styles.content}>
           <Button style={styles.button}
