@@ -16,7 +16,6 @@ export default class TrainingMode extends Component {
     };
   }
 
-<<<<<<< HEAD
 
 
   getAccuracy(shotCoordinate, shotTarget) {
@@ -37,8 +36,7 @@ export default class TrainingMode extends Component {
     }
 
   }
-=======
->>>>>>> c05ec7542c7c3314682b73e386fbd99ab8479289
+
   async componentDidMount() {
     await Expo.Font.loadAsync({
       'bungee-inline': require('../assets/fonts/BungeeInline-Regular.ttf'),
@@ -131,7 +129,6 @@ export default class TrainingMode extends Component {
         <View contentContainerStyle={styles.content}>
         <View style={styles.textContainer}>
           <Text style={styles.text}> Shot: forehand </Text>
-          <Text style={styles.text}>  {a}</Text>
         </View>
           <Image style={styles.court}
             source={require('../assets/images/tenniscourt.png')}
