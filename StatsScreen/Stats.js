@@ -5,6 +5,7 @@ import { Font } from 'expo';
 
 import Button from '../Components/Button';
 import RadioForm, {RadioButton, RadioButtonInput, RadioButtonLabel} from 'react-native-simple-radio-button';
+import { Table, TableWrapper, Row, Rows, Col, Cols, Cell } from 'react-native-table-component';
 
 
 export default class Stats extends React.Component {
@@ -43,6 +44,17 @@ export default class Stats extends React.Component {
       {label: 'Serve ', value: 2 }
     ];
 
+    const tableDataServe = [
+      ['1', '1', '1', '1', '1', '1']
+    ];
+
+    const tableDataHand = [
+      ['1', '', '2', '', '3'],
+      ['4', '', '5', '', '6'],
+      ['', '', '', '', '', ''],
+      ['1', '', '2', '', '3']
+    ];
+
     if (!this.state.fontLoaded) { return null;}
     return (
       <Container style={styles.container}>
@@ -64,8 +76,21 @@ export default class Stats extends React.Component {
           </View>
 
 
+          
+
           <Image style={styles.court}
-            source={require('../assets/images/tenniscourt.png')}/>
+            source={require('../assets/images/tenniscourt.png')}>
+  
+            <Table style = {styles.tableHand}>
+              <Rows data = {tableDataHand}
+              flexArr={[1, 1, 2, 1, 1]}
+              style = {styles.row}
+              textStyle = {styles.stats}/>
+            </Table>
+
+            
+
+          </Image>
           
         </Content>
       </Container>
@@ -111,5 +136,21 @@ const styles = StyleSheet.create({
   radio: {
     marginVertical: 12,
     marginLeft: 30
+  },
+  row: {
+    height: 50
+  },
+  stats: {
+    textAlign: 'center'
+  },
+  tableHand: {
+    width: 135,
+    marginLeft: '34%',
+    marginTop: '14.5%'
+  },
+  tableServe: {
+    width: 135,
+    marginLeft: '34%',
+    marginTop: '20%' 
   }
 });
