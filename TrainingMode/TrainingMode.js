@@ -4,7 +4,6 @@ import { TouchableOpacity, StyleSheet, View, Image } from 'react-native';
 import { Container, Content, Left, Right, Text, ListItem, Radio } from 'native-base';
 
 import Button from '../Components/Button';
-
 export default class TrainingMode extends Component {
   static navigationOptions = {
     title: 'Training',
@@ -13,9 +12,11 @@ export default class TrainingMode extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      fontLoaded: false
+      fontLoaded: false,
     };
   }
+
+
 
   getAccuracy(shotCoordinate, shotTarget) {
     let [xCoord, yCoord] = shotCoordinate
@@ -43,32 +44,91 @@ export default class TrainingMode extends Component {
     });
     this.setState({ fontLoaded: true });
   }
-  onPress = () => {
-    this.setState({
-      zone: "I got touched with a parent pan responder",
-    });
-    this.props.navigation.navigate("EndGameScreen");
-  };
+
 
 
 
   render() {
     const { navigation } = this.props;
     if (!this.state.fontLoaded) { return null;}
+    var a = Math.floor(Math.random() * 15) + 1 ;
+    var view = null
+       
 
     var targetLocations = [];
+
+    if (a == 1) {
+      view = <View style={styles.target}>
+            <Text style={styles.targetText}>TARGET</Text>
+          </View>
+    } else if (a == 2) {
+            view = <View style={styles.target2}>
+            <Text style={styles.targetText}>TARGET</Text>
+          </View>
+
+    } else if (a == 3) {
+            view = <View style={styles.target3}>
+            <Text style={styles.targetText}>TARGET</Text>
+          </View>
+    } else if (a == 4) {
+            view = <View style={styles.target4}>
+            <Text style={styles.targetText}>TARGET</Text>
+          </View>
+    } else if (a == 5) {
+            view = <View style={styles.target5}>
+            <Text style={styles.targetText}>TARGET</Text>
+          </View>
+    }  else if (a == 6) {
+            view = <View style={styles.target6}>
+            <Text style={styles.targetText}>TARGET</Text>
+          </View>
+    } else if (a == 7) {
+            view = <View style={styles.target7}>
+            <Text style={styles.targetText}>TARGET</Text>
+          </View>
+    } else if (a == 8) {
+            view = <View style={styles.target8}>
+            <Text style={styles.targetText}>TARGET</Text>
+          </View>
+    } else if (a == 9) {
+            view = <View style={styles.target9}>
+            <Text style={styles.targetText}>TARGET</Text>
+          </View>
+    } else if (a == 10) {
+            view = <View style={styles.target10}>
+            <Text style={styles.targetText}>TARGET</Text>
+          </View>
+    } else if (a == 11) {
+            view = <View style={styles.target11}>
+            <Text style={styles.targetText}>TARGET</Text>
+          </View>
+    } else if (a == 12) {
+            view = <View style={styles.target12}>
+            <Text style={styles.targetText}>TARGET</Text>
+          </View>
+    } else if (a == 13) {
+            view = <View style={styles.target13}>
+            <Text style={styles.targetText}>TARGET</Text>
+          </View>
+    } else if (a == 14) {
+            view = <View style={styles.target14}>
+            <Text style={styles.targetText}>TARGET</Text>
+          </View>
+    } else {
+      view = <View style={styles.target15}>
+            <Text style={styles.targetText}>TARGET</Text>
+          </View>
+    }
+
+
+
 
     return (
       <Container style={styles.container}>
         <View contentContainerStyle={styles.content}>
         <View style={styles.textContainer}>
           <Text style={styles.text}> Shot: forehand </Text>
-          <Text style={styles.text}> Target: No 1 </Text>
-        </View>
-        <View style={styles.container}>
-          <TouchableOpacity onPress={this.onPress}>
-            <Text>{this.state.zone}</Text>
-          </TouchableOpacity>
+          <Text style={styles.text}>  {a}</Text>
         </View>
           <Image style={styles.court}
             source={require('../assets/images/tenniscourt.png')}
@@ -80,18 +140,13 @@ export default class TrainingMode extends Component {
           <Image style={styles.box}
             source={require('../assets/images/box.png')}
           />
-
-          <View style={styles.target}>
-            <Text style={styles.targetText}>TARGET</Text>
-          </View>
-
+          {view}
           <Button style={styles.button}
            label='End the game'
            onPress={() => this.props.navigation.navigate("EndGameScreen")}
           />
-
-
         </View>
+
       </Container>
     );
   }
@@ -157,8 +212,167 @@ const styles = StyleSheet.create({
     position: 'absolute',
     alignItems: 'center',
     justifyContent: 'center',
-    top: 126 + 100/3,
-    left: 121 + 140/3,
+    top: 90+ 100/3,
+    left: 121 + 140/3
+
+  },
+  target2: {
+    width: 140/3,
+    height: 100/3,
+    backgroundColor: 'red',
+    zIndex: 1,
+    position: 'absolute',
+    alignItems: 'center',
+    justifyContent: 'center',
+    top: 130+ 100/3,
+    left: 121 + 140/3
+
+  },
+  target3: {
+    width: 140/3,
+    height: 100/3,
+    backgroundColor: 'red',
+    zIndex: 1,
+    position: 'absolute',
+    alignItems: 'center',
+    justifyContent: 'center',
+    top: 260+ 100/3,
+    left: 121 + 140/3
+
+  },
+  target4: {
+    width: 140/6,
+    height: 100/3,
+    backgroundColor: 'red',
+    zIndex: 1,
+    position: 'absolute',
+    alignItems: 'center',
+    justifyContent: 'center',
+    top: 260+ 100/3,
+    left: 50 + 140/3
+
+  },
+  target5: {
+    width: 140/6,
+    height: 100/3,
+    backgroundColor: 'red',
+    zIndex: 1,
+    position: 'absolute',
+    alignItems: 'center',
+    justifyContent: 'center',
+    top: 90+ 100/3,
+    left: 50 + 140/3
+  },
+  target6: {
+    width: 140/6,
+    height: 100/3,
+    backgroundColor: 'red',
+    zIndex: 1,
+    position: 'absolute',
+    alignItems: 'center',
+    justifyContent: 'center',
+    top: 130+ 100/3,
+    left: 50 + 140/3
+  },
+  target7: {
+    width: 140/6,
+    height: 100/3,
+    backgroundColor: 'red',
+    zIndex: 1,
+    position: 'absolute',
+    alignItems: 'center',
+    justifyContent: 'center',
+    top: 90+ 100/3,
+    left: 215 + 140/3
+  },
+  target8: {
+    width: 140/6,
+    height: 100/3,
+    backgroundColor: 'red',
+    zIndex: 1,
+    position: 'absolute',
+    alignItems: 'center',
+    justifyContent: 'center',
+    top: 130+ 100/3,
+    left: 215 + 140/3
+  },
+  target9: {
+    width: 140/6,
+    height: 100/3,
+    backgroundColor: 'red',
+    zIndex: 1,
+    position: 'absolute',
+    alignItems: 'center',
+    justifyContent: 'center',
+    top: 260+ 100/3,
+    left: 215 + 140/3
+  },
+  target10: {
+    width: 140/6,
+    height: 100/3,
+    backgroundColor: 'red',
+    zIndex: 1,
+    position: 'absolute',
+    alignItems: 'center',
+    justifyContent: 'center',
+    top: 195+ 100/3,
+    left: 75 + 140/3
+  },
+  target11: {
+    width: 140/6,
+    height: 100/3,
+    backgroundColor: 'red',
+    zIndex: 1,
+    position: 'absolute',
+    alignItems: 'center',
+    justifyContent: 'center',
+    top: 195+ 100/3,
+    left: 97 + 140/3
+
+  },
+  target12: {
+    width: 140/6,
+    height: 100/3,
+    backgroundColor: 'red',
+    zIndex: 1,
+    position: 'absolute',
+    alignItems: 'center',
+    justifyContent: 'center',
+    top: 195+ 100/3,
+    left: 120 + 140/3
+  },
+    target13: {
+    width: 140/6,
+    height: 100/3,
+    backgroundColor: 'red',
+    zIndex: 1,
+    position: 'absolute',
+    alignItems: 'center',
+    justifyContent: 'center',
+    top: 195+ 100/3,
+    left: 147 + 140/3
+  },
+  target14: {
+    width: 140/6,
+    height: 100/3,
+    backgroundColor: 'red',
+    zIndex: 1,
+    position: 'absolute',
+    alignItems: 'center',
+    justifyContent: 'center',
+    top: 195+ 100/3,
+    left: 170 + 140/3
+  },
+  target15: {
+    width: 140/6,
+    height: 100/3,
+    backgroundColor: 'red',
+    zIndex: 1,
+    position: 'absolute',
+    alignItems: 'center',
+    justifyContent: 'center',
+    top: 195+ 100/3,
+    left: 192+ 140/3
   },
   targetText: {
     color: '#ffffff',
