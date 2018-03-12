@@ -23,15 +23,9 @@ export default class Stats extends React.Component {
       sound: state.params.sound,
       key: state.params.key,
       handedness: state.params.handedness,
-      difficultyTypes: state.params.difficulty
+      difficultyTypes: state.params.difficulty,
+      tableDataHand: [['1', '', '2', '', '3'], ['4', '', '5', '', '6'], ['', '', '', '', ''],['13', '', '14', '', '15']]
     };
-  }
-
-  async componentDidMount() {
-    await Font.loadAsync({
-      'bungee-inline': require('../assets/fonts/BungeeInline-Regular.ttf'),
-    });
-    this.setState({ fontLoaded: true });
   }
 
   async componentDidMount() {
@@ -41,9 +35,75 @@ export default class Stats extends React.Component {
       'Roboto_medium': require("native-base/Fonts/Roboto_medium.ttf")
     });
     this.setState({ fontLoaded: true });
-    getStats(0);
   }
 
+  setOurState = (finalArray) => {
+      console.log('final' + finalArray);
+      this.setState({tableDataHand: finalArray});
+  }
+  getStats = (value) => {
+      if (value == 0) {
+        hand = 'forehand'
+      } 
+      else if (value == 1) {
+        hand = "backhand"
+      } else {
+        hand = "serve"
+      }
+      var promise = new Promise((resolve, reject) => {
+        arr = []
+        firebaseApp.database().ref('/users/' + currUser + "/stats/" + hand).once("value").then(snapshot => {
+        snapshot.forEach(function(childSnapshot) {
+          var hits = childSnapshot.val() && childSnapshot.val().hits;
+          var shots = childSnapshot.val() && childSnapshot.val().shots;
+          console.log("hi" + hits/shots);
+          arr.push(Math.ceil((hits/shots) * 100));
+          console.log(arr);
+          });
+         if (arr.length > 0) {
+          resolve(arr);
+        }
+          else {
+          console.log("arr" + arr.length);
+          reject(Error("It broke"));
+        }
+        });
+      });
+      promise.then((arr) => {
+      return new Promise((resolve, reject) => {  
+      tempArr = []
+      finalArr = []
+      arrCounter = 0
+      for (var x = 0; x < 20; x++) {
+        if (x % 5 != 0 || x == 0) {
+          if (x== 1 || x == 3 || x == 6 || x==8 || x == 16 || x == 18 ||(x > 9 && x < 15)) {
+            tempArr.push(" ");
+          } else { 
+            tempArr.push(arr[arrCounter] + "%");
+            arrCounter++;
+          }
+        } else {
+          finalArr.push(tempArr)
+          tempArr = []
+          if (x == 10) {
+            tempArr.push(" ");
+          } else {
+            tempArr.push(arr[arrCounter] + "%");
+            arrCounter++;
+          }
+        }
+        console.log("final" + x + finalArr);
+        if (x == 19) {
+            finalArr.push(tempArr);
+            resolve(finalArr);
+        }
+      } 
+      reject(Error("it broke again"))
+    })
+      }).then((finalArray) => {
+          this.setState({tableDataHand: finalArray});
+      })
+  }
   render() {
     const { navigation } = this.props;
     const radio_props = [
@@ -55,32 +115,8 @@ export default class Stats extends React.Component {
     const tableDataServe = [
       ['1', '1', '1', '1', '1', '1']
     ];
-
-    const tableDataHand = [
-      ['1', '', '2', '', '3'],
-      ['4', '', '5', '', '6'],
-      ['', '', '', '', ''],
-      ['13', '', '14', '', '15']
-    ];
-
-    getStats = (value) => {
-      if (value == 0) {
-        hand = 'forehand'
-      } 
-      else if (value == 1) {
-        hand = "backhand"
-      } else {
-        hand = "serve"
-      }
-      firebaseApp.database().ref('/users/' + currUser + "/stats/" + hand).once("value").then(snapshot => {
-        snapshot.forEach(function(childSnapshot) {
-          var hits = childSnapshot.val() && childSnapshot.val().hits;
-          var shots = childSnapshot.val() && childSnapshot.val().shots;
-          console.log("hi" + hits/shots);
-      })
-      });
-    }
-
+    const tableDataHand = this.state.tableDataHand;
+    console.log(tableDataHand);
     if (!this.state.fontLoaded) { return null;}
     return (
       <Container style={styles.container}>
@@ -90,7 +126,7 @@ export default class Stats extends React.Component {
             <RadioForm
               style={styles.radio}
               radio_props={radio_props}
-              initial = {0}
+              initial = {-1}
               formHorizontal={true}
               labelHorizontal={true}
               buttonColor={'#ffffff'}
@@ -167,7 +203,8 @@ const styles = StyleSheet.create({
     height: 50
   },
   stats: {
-    textAlign: 'center'
+    textAlign: 'center',
+    fontSize: 10
   },
   tableHand: {
     width: 135,
