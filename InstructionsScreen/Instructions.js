@@ -4,13 +4,9 @@ import { Container, Content } from 'native-base';
 import { Font } from 'expo';
 
 import Button from '../Components/Button';
-
+import Navbar from '../Components/Navbar';
 
 export default class Instructions extends React.Component {
-  static navigationOptions = {
-    title: 'How to Play',
-  };
-
   constructor(props) {
     super(props);
     this.state = {
@@ -39,6 +35,11 @@ export default class Instructions extends React.Component {
     if (!this.state.fontLoaded) { return null;}
     return (
       <Container style={styles.container}>
+        <Navbar
+          title='How To Play'
+          onPressBack={() => navigation.navigate("Home")}
+          handleHamburger={() => navigation.navigate('DrawerOpen')}/>
+
         <Content contentContainerStyle={styles.content}>
           <Text style={styles.firsttext}>1. Select play mode</Text>
 

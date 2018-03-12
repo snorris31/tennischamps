@@ -4,9 +4,14 @@ import { Container, Content } from 'native-base';
 import { Font } from 'expo';
 
 import Button from '../Components/Button';
+import Navbar from '../Components/Navbar';
+import Hidden from '../Components/Hidden';
 
 
 export default class Instructions extends React.Component {
+  static navigationOptions = {
+    drawerLabel: <Hidden />,
+  };
 
   constructor(props) {
     super(props);

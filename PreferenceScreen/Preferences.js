@@ -3,13 +3,11 @@ import { StyleSheet, TextInput, View } from 'react-native';
 import { Container, Content, Left, Right, Text, ListItem, Radio } from 'native-base';
 import * as firebase from 'firebase';
 import Button from '../Components/Button';
+import Navbar from '../Components/Navbar';
 import { Switch } from 'react-native';
 import RadioForm, {RadioButton, RadioButtonInput, RadioButtonLabel} from 'react-native-simple-radio-button';
 
 export default class Preferences extends Component {
-  static navigationOptions = {
-    title: 'Preferences',
-  };
 
   constructor(props) {
     super(props);
@@ -137,6 +135,9 @@ componentWillMount = async() => {
 
     return (
       <Container style={styles.container}>
+        <Navbar
+          title='PREFERENCES'
+          onPressBack={() => navigation.navigate("Home", {key: this.state.key, difficulty: this.state.difficultyTypes, sound: this.state.sound, handedness: this.state.handedness})}/>
         <Content contentContainerStyle={styles.content}>
 
         <View style={styles.contentButtons}>

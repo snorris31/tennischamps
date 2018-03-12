@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { StackNavigator } from "react-navigation";
+import { DrawerNavigator } from "react-navigation";
 
 import { View, Button } from 'native-base';
 import { Ionicons } from '@expo/vector-icons';
@@ -16,7 +16,7 @@ import Game from "../GameMode/GameMode.js";
 import Stats from "../StatsScreen/Stats.js";
 import EndGameScreen from "../EndGameScreen/EndGameScreen.js";
 
-const RootStack = StackNavigator(
+const RootStack = DrawerNavigator(
   {
     Welcome: { screen: Welcome },
     LogIn: { screen: LogIn },
@@ -31,27 +31,14 @@ const RootStack = StackNavigator(
     EndGameScreen: {screen: EndGameScreen}
   },
   {
-    initialRouteName: 'Welcome',
-    navigationOptions: {
-      gesturesEnabled: false,
-      headerBackTitle: null,
-      headerStyle: {
-        backgroundColor: '#2A5D38',
-      },
-      headerTintColor: '#fff',
-      headerTitleStyle: {
-        //fontFamily: 'bungee-inline',
-        fontSize: 18,
-        fontWeight: 'bold',
-        color: '#ffffff'
-      },
-      /*headerRight: (
-      <View padding={16}>
-        <Button transparent >
-          <Ionicons name='md-menu' size={32} color='#ffffff'/>
-        </Button>
-      </View>),*/
-    },
+    drawerPosition: "right",
+    drawerWidth: 200,
+    /*contentOptions:
+    {
+
+      items: ["Home", "Preferences"],
+    },*/
+    
   }
 );
 

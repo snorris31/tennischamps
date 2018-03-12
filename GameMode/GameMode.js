@@ -4,10 +4,12 @@ import { Alert, StyleSheet, View, Image } from 'react-native';
 import { Container, Content, Left, Right, Text, ListItem, Radio } from 'native-base';
 
 import Button from '../Components/Button';
+import Navbar from '../Components/Navbar';
+import Hidden from '../Components/Hidden';
 
 export default class GameMode extends Component {
   static navigationOptions = {
-    title: 'Game',
+    drawerLabel: <Hidden />,
   };
 
   constructor(props) {
@@ -38,6 +40,9 @@ export default class GameMode extends Component {
 
     return (
       <Container style={styles.container}>
+        <Navbar
+          title='GAME'
+          onPressBack={() => navigation.goBack(null)}/>
 
         <View contentContainerStyle={styles.content}>
         <Text style={styles.text}>SCORE: 0-0</Text>
