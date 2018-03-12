@@ -4,6 +4,7 @@ import { Container, Content } from 'native-base';
 import { Font } from 'expo';
 
 import Button from '../Components/Button';
+import Navbar from '../Components/Navbar';
 import RadioForm, {RadioButton, RadioButtonInput, RadioButtonLabel} from 'react-native-simple-radio-button';
 import { Table, TableWrapper, Row, Rows, Col, Cols, Cell } from 'react-native-table-component';
 
@@ -58,6 +59,11 @@ export default class Stats extends React.Component {
     if (!this.state.fontLoaded) { return null;}
     return (
       <Container style={styles.container}>
+        <Navbar
+          title='Statistics'
+          onPressBack={() => navigation.navigate("Home")}
+          handleHamburger={() => navigation.navigate('DrawerOpen')}/>
+
         <Content contentContainerStyle={styles.content}>
           <View style={styles.contentButtons}>
             <Text style={styles.text}> Shot Type: </Text>
