@@ -7,10 +7,6 @@ import Button from '../Components/Button';
 import Navbar from '../Components/Navbar';
 
 export default class Instructions extends React.Component {
-  static navigationOptions = {
-    title: 'How to Play',
-  };
-
   constructor(props) {
     super(props);
     this.state = {
