@@ -4,9 +4,12 @@ import { TouchableOpacity, StyleSheet, View, Image } from 'react-native';
 import { Container, Content, Left, Right, Text, ListItem, Radio } from 'native-base';
 
 import Button from '../Components/Button';
+import Navbar from '../Components/Navbar';
+import Hidden from '../Components/Hidden';
+
 export default class TrainingMode extends Component {
   static navigationOptions = {
-    title: 'Training',
+    drawerLabel: <Hidden />,
   };
 
   constructor(props) {
@@ -126,6 +129,10 @@ export default class TrainingMode extends Component {
 
     return (
       <Container style={styles.container}>
+        <Navbar
+          title='TRAINING'
+          onPressBack={() => navigation.goBack(null)}/>
+
         <View contentContainerStyle={styles.content}>
         <View style={styles.textContainer}>
           <Text style={styles.text}> Shot: forehand </Text>
