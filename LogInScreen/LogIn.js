@@ -11,6 +11,7 @@ import Hidden from '../Components/Hidden';
 export default class LogIn extends Component {
   static navigationOptions = {
       drawerLabel: <Hidden />,
+      drawerLockMode: 'locked-closed',
   };
 
   constructor(props) {

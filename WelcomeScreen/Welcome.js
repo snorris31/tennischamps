@@ -8,6 +8,7 @@ import Hidden from '../Components/Hidden';
 export default class WelcomeScreen extends React.Component {
   static navigationOptions = {
     drawerLabel: <Hidden />,
+    drawerLockMode: 'locked-closed',
   };
 
   constructor(props) {
