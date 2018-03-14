@@ -45,7 +45,8 @@ export default class Mode extends React.Component {
       
         <Navbar
           title='Mode'
-          onPressBack={() => navigation.navigate("Home")}/>
+          onPressBack={() => navigation.navigate("Home")}
+          handleHamburger={() => navigation.navigate('DrawerOpen')}/>
 
         <Text style={styles.headertext}>Choose your mode:</Text>
 
