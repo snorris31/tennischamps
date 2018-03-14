@@ -10,7 +10,14 @@ export default class TennisGame {
     getRandomShotType() {
         // ieee standard dice roll
         // xkcd.com/221
-        return 4;
+        var shotTypes = {
+            0: "Forehand",
+            1: "Backhand",
+            2: "Serve"
+        }
+
+        key = Math.floor(Math.random() * 3);
+        return shotTypes[key];
     }
 
 
