@@ -42,7 +42,7 @@ export default class GameMode extends Component {
       <Container style={styles.container}>
         <Navbar
           title='GAME'
-          onPressBack={() => navigation.goBack(null)}/>
+          onPressBack={() => navigation.goBack("Home")}/>
 
         <View contentContainerStyle={styles.content}>
         <Text style={styles.text}>SCORE: 0-0</Text>

@@ -131,7 +131,8 @@ export default class TrainingMode extends Component {
       <Container style={styles.container}>
         <Navbar
           title='TRAINING'
-          onPressBack={() => navigation.goBack(null)}/>
+          onPressBack={() => navigation.goBack("Home")}
+          handleHamburger={() => navigation.navigate('DrawerOpen')}/>
 
         <View contentContainerStyle={styles.content}>
         <View style={styles.textContainer}>
