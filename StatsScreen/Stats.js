@@ -25,7 +25,7 @@ export default class Stats extends React.Component {
       key: state.params.key,
       handedness: state.params.handedness,
       difficultyTypes: state.params.difficulty,
-      tableDataHand: [['1', '', '2', '', '3'], ['4', '', '5', '', '6'], ['', '', '', '', ''],['13', '', '14', '', '15']]
+      tableDataHand: [['1', ' ', '2', ' ', '3'], ['4', ' ', '5', ' ', '6'], [' ', ' ', ' ', ' ', ' ', ' '],['13', ' ', '14', ' ', '15']]
     };
   }
 
@@ -45,12 +45,17 @@ export default class Stats extends React.Component {
   getStats = (value) => {
       if (value == 0) {
         hand = 'forehand'
+        this.forehandBackhandDisplay(hand);
       } 
       else if (value == 1) {
         hand = "backhand"
+        this.forehandBackhandDisplay(hand);
       } else {
         hand = "serve"
+        this.serveDisplay(hand);
       }
+    }
+    forehandBackhandDisplay = (hand) => {
       var promise = new Promise((resolve, reject) => {
         arr = []
         firebaseApp.database().ref('/users/' + currUser + "/stats/" + hand).once("value").then(snapshot => {
@@ -75,14 +80,16 @@ export default class Stats extends React.Component {
       tempArr = []
       finalArr = []
       arrCounter = 0
-      for (var x = 0; x < 20; x++) {
-        if (x % 5 != 0 || x == 0) {
-          if (x== 1 || x == 3 || x == 6 || x==8 || x == 16 || x == 18 ||(x > 9 && x < 15)) {
+      for (var x = 0; x < 21; x++) {
+        if ((x < 10 || x > 16) && (x != 5 || x == 0)) {
+          if (x== 1 || x == 3 || x == 6 || x==8 || x == 17 || x == 19) {
             tempArr.push(" ");
           } else { 
             tempArr.push(arr[arrCounter] + "%");
             arrCounter++;
           }
+        } else if ((x > 9 && x < 16) && x != 10) {
+           tempArr.push(" ");
         } else {
           finalArr.push(tempArr)
           tempArr = []
@@ -94,7 +101,7 @@ export default class Stats extends React.Component {
           }
         }
         console.log("final" + x + finalArr);
-        if (x == 19) {
+        if (x == 20) {
             finalArr.push(tempArr);
             resolve(finalArr);
         }
@@ -103,6 +110,61 @@ export default class Stats extends React.Component {
     })
       }).then((finalArray) => {
           this.setState({tableDataHand: finalArray});
+          console.log("final", finalArray);
+      })
+  }
+  serveDisplay = (hand) => {
+      var promise = new Promise((resolve, reject) => {
+        arr = []
+        firebaseApp.database().ref('/users/' + currUser + "/stats/" + hand).once("value").then(snapshot => {
+        snapshot.forEach(function(childSnapshot) {
+          var hits = childSnapshot.val() && childSnapshot.val().hits;
+          var shots = childSnapshot.val() && childSnapshot.val().shots;
+          console.log("hi" + hits/shots);
+          arr.push(Math.ceil((hits/shots) * 100));
+          console.log(arr);
+          });
+         if (arr.length > 0) {
+          resolve(arr);
+        }
+          else {
+          console.log("arr" + arr.length);
+          reject(Error("It broke"));
+        }
+        });
+      });
+      promise.then((arr) => {
+      return new Promise((resolve, reject) => {  
+      tempArr = []
+      finalArr = []
+      arrCounter = 0
+      for (var x = 0; x < 21; x++) {
+        if (((x < 10 || x > 15) && (x%5 != 0) && (x != 16)) || x == 0 || x == 20) {
+            tempArr.push(" ");
+        } else if (x > 10 && x < 16) {
+            tempArr.push(arr[arrCounter] + "%");
+            arrCounter++;
+        } else {
+          finalArr.push(tempArr)
+          tempArr = []
+          if (x == 16 || x == 5) {
+            tempArr.push(" ");
+          } else {
+            tempArr.push(arr[arrCounter] + "%");
+            arrCounter++;
+          }
+        }
+        console.log("final" + x + finalArr);
+        if (x == 20) {
+            finalArr.push(tempArr);
+            resolve(finalArr);
+        }
+      } 
+      reject(Error("it broke again"))
+    })
+      }).then((finalArray) => {
+          this.setState({tableDataHand: finalArray});
+          console.log("final", finalArray);
       })
   }
   render() {
